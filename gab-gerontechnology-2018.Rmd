@@ -425,19 +425,19 @@ length_ngram <- 5
 ngrams <- c()
 for (i in 1:7) {
   ngram <- substr(example_sequence, i, i+length_ngram-1)
-  if(i > 0) ngrams <- c(ngrams, ngram)
+  ngrams <- c(ngrams, ngram)
   cat(sep = "",
     ".ngram-example[\n<code>",
-    if (i > 0) substr(example_sequence, 0, i-1),
-    if (i > 0) ".word.hl-text.hl[",
-    if (i > 0) ngram,
-    if (i > 0) "]",
-    if (i > 0) substr(example_sequence, i+length_ngram, nchar(example_sequence)) else example_sequence,
+    substr(example_sequence, 0, i-1),
+    ".word.hl-text.hl[",
+    ngram,
+    "]",
+    substr(example_sequence, i+length_ngram, nchar(example_sequence)),
     "</code>\n]", 
     if (i == 1) "\n\n--\n\n",
-    if (i > 0) "&nbsp;&nbsp;&nbsp;&nbsp;.big[\U2B07]",
+    "&nbsp;&nbsp;&nbsp;&nbsp;.big[\U2B07]",
     if (i == 1) "\n\n--\n\n",
-    if (length(ngrams)) paste0("\n\n**Bag of n-grams**\n\n.word[", paste(ngrams, collapse = "] .word["), "]"),
+    if (length(ngrams)) paste0("\n\n**Bag of event n-grams**\n\n.word[", paste(ngrams, collapse = "] .word["), "]"),
     # if (length(ngrams)) paste0("\n\n**Bag of n-grams:**\n\n<ul class=\"words\"><li>", paste(ngrams, collapse = "</li><li>"), "</ul>"),
     "\n\n---\ncount: false\n\n")
 }
