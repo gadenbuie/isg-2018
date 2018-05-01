@@ -38,17 +38,15 @@ usf_gold  <- "#CFC493"
 usf_gray  <- "#7E96A0"
 usf_accent <- c("#DBE442","#9CCB3B","#009374","#29AFCE","#80B0A6","#7396A0","#006484","#466069")
 duo_accent(
-  text_font_google         = google_font("Roboto", "400"),
-  text_font_weight         = "400",
-  text_font_size           = "23px",
-  code_font_url            = "https://cdn.rawgit.com/tonsky/FiraCode/1.204/distr/fira_code.css",
-  code_font_family         = "Fira Code",
-  code_inline_color        = "#222",
-  header_font_google       = google_font("Merriweather", "400", "300", "300i"),
-  inverse_header_color     = "#FFF",
-  text_slide_number_color  = usf_gray,
-  inverse_background_color = usf_green, 
-  # table_row_even_background_color = "#f5f5f5",
+  text_font_google                = google_font("Roboto", "400", "300"),
+  header_font_google              = google_font("Merriweather", "400", "300", "300i"),
+  code_font_google                = google_font("IBM Plex Mono"),
+  text_font_weight                = "400",
+  text_font_size                  = "23px",
+  code_inline_color               = "#222",
+  text_slide_number_color         = usf_gray,
+  inverse_header_color            = "#FFF",
+  inverse_background_color        = usf_green,
   table_row_even_background_color = apply_alpha(usf_gold, 0.25),
   title_slide_background_image    = "images/usf-logo-gold.png",
   title_slide_background_size     = "200px",
@@ -59,15 +57,6 @@ duo_accent(
     ".remark-slide-content" = list(
       "padding-top"    = "0px",
       "padding-bottom" = "0px"),
-    #".remark-slide-container" = list(
-      #transition = "opacity 0.5s ease-out",
-      #opacity = "0"
-    #),
-    #".remark-visible" = list(
-      #transition = "opacity 0.5s ease-out",
-      #opacity = "1"
-    #),
-    #".remark-fading" = list("z-index" = "9"),
     ".title-slide > h3" = list(
       "text-align"  = "left",
       "font-size"   = "25px",
@@ -83,7 +72,7 @@ duo_accent(
     ".white"          = list(color = "#FFF"),
     ".skip-header"    = list("margin-top" = "33%"),
     ".mt-3"           = list("margin-top" = "3em"),
-    ".hl"             = list("background-color" = "#ffff88"),
+    ".hl"             = list("background-color" = "#ffff88 !important"),
     ".hl-text"        = list("color" = "#BB1847"),
     ".ngram-example code" = list(
       "font-size" = "1.5em",
@@ -92,12 +81,13 @@ duo_accent(
     ),
     "ul.words" = list("list-style" = "none"),
     ".words li, .word" = list(
-      "font-family" = "Fira Code, Monaco, monospace",
+      "font-family" = "IBM Plex Mono, Monaco, monospace",
       "background-color" = "#eee",
       "padding-left" = "8px",
       "padding-right" = "8px",
       "margin-bottom" = "6px",
       "width" = "275px",
+      "white-space" = "nowrap",
       "border" = "1px #aaa solid"),
     "li" = list("margin-bottom" = "0.4em"),
     ".box-light" = list(
@@ -417,10 +407,15 @@ dict <- c(dict, "Pause" = "0")
 example_actual <- ap:::decode(str_split(example_sequence, "")[[1]], dict)
 example_actual <- str_replace(example_actual, "!Opened", "Closed")
 example_actual <- str_replace_all(example_actual, "(\\w)([A-Z])", "\\1 \\2")
-cat('<ul class="words">',
-    paste0("<li>", example_actual[1:10], "</li>"),
-    "</ul>"
-)
+# cat('<ul class="words">',
+#     paste0("<li>", example_actual[1:10], "</li>"),
+#     "</ul>"
+# )
+cat('<p style="line-height: 2.5em">', 
+    paste0('<span class="word">', example_actual[1:10], "</span>", 
+           c(rep("\n--\n", 5), rep("", 5)), 
+           collapse = " \U27A1 "),
+    "</p>")
 ```
 
 ---
@@ -434,7 +429,7 @@ for (i in 1:7) {
   cat(sep = "",
     ".ngram-example[\n<code>",
     if (i > 0) substr(example_sequence, 0, i-1),
-    if (i > 0) ".hl.hl-text[",
+    if (i > 0) ".word.hl-text.hl[",
     if (i > 0) ngram,
     if (i > 0) "]",
     if (i > 0) substr(example_sequence, i+length_ngram, nchar(example_sequence)) else example_sequence,
@@ -442,7 +437,7 @@ for (i in 1:7) {
     if (i == 1) "\n\n--\n\n",
     if (i > 0) "&nbsp;&nbsp;&nbsp;&nbsp;.big[\U2B07]",
     if (i == 1) "\n\n--\n\n",
-    if (length(ngrams)) paste0("\n\n**Bag of n-grams:**\n\n.word[", paste(ngrams, collapse = "] .word["), "]"),
+    if (length(ngrams)) paste0("\n\n**Bag of n-grams**\n\n.word[", paste(ngrams, collapse = "] .word["), "]"),
     # if (length(ngrams)) paste0("\n\n**Bag of n-grams:**\n\n<ul class=\"words\"><li>", paste(ngrams, collapse = "</li><li>"), "</ul>"),
     "\n\n---\ncount: false\n\n")
 }
@@ -465,9 +460,10 @@ for (i in 1:7) {
 .pull-right[
 ```{r ngrams-table}
 ngramify_freq(example_sequence, NGRAM_MIN, NGRAM_MAX) %>% 
-  mutate(ngram = glue::glue("<code>{ngram}</code>")) %>% 
+  mutate(ngram = glue::glue("<span class='word'>{ngram}</span>")) %>% 
   slice(1:10) %>% 
   knitr::kable(format = "html", digits = 4, escape = FALSE,
+               align = "cccr",
                col.names = c("n-gram", "Count", "Rank", "Freq."))
 ```
 ]

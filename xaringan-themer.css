@@ -1,11 +1,11 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:400);
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300);
 @import url(https://fonts.googleapis.com/css?family=Merriweather:400,300,300i);
-@import url(https://cdn.rawgit.com/tonsky/FiraCode/1.204/distr/fira_code.css);
+@import url(https://fonts.googleapis.com/css?family=IBM+Plex+Mono);
 @import url(xaringan-themer.css);
 
 body {
   font-family: Roboto, 'Palatino Linotype', 'Book Antiqua', Palatino, 'Microsoft YaHei', 'Songti SC', serif;
-  font-weight: ;
+  font-weight: 400;
   color: #000000;
 }
 h1, h2, h3 {
@@ -27,7 +27,7 @@ h1, h2, h3 {
     font-size: 35px;
 }
 .remark-code, .remark-inline-code {
-  font-family: 'Fira Code', 'Lucida Console', Monaco, monospace;
+  font-family: IBM Plex Mono, 'Lucida Console', Monaco, monospace;
 }
 .remark-code {
   font-size: 0.9em;
@@ -191,7 +191,7 @@ table.dataTable.hover tbody tr:hover, table.dataTable.display tbody tr:hover {
   margin-top: 3em;
 }
 .hl {
-  background-color: #ffff88;
+  background-color: #ffff88 !important;
 }
 .hl-text {
   color: #BB1847;
@@ -205,12 +205,13 @@ ul.words {
   list-style: none;
 }
 .words li, .word {
-  font-family: Fira Code, Monaco, monospace;
+  font-family: IBM Plex Mono, Monaco, monospace;
   background-color: #eee;
   padding-left: 8px;
   padding-right: 8px;
   margin-bottom: 6px;
   width: 275px;
+  white-space: nowrap;
   border: 1px #aaa solid;
 }
 li {
