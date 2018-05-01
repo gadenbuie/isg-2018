@@ -729,7 +729,7 @@ ws <- data_frame(
 
 ```{r permutation-plots}
 permuted_plots <- list()
-set.seed(44)
+set.seed(43)
 for (i in 1:4) {
   permuted_plots[[i]] <- plot_day_examples(ws, i > 1)
   gg <- cowplot::plot_grid(plotlist = permuted_plots, ncol = 4)
