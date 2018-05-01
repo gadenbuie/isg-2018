@@ -227,6 +227,10 @@ li {
   box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
   padding: 1em 1em 1em 2em;
 }
+#table-results td, #table-results th {
+  padding-left: 13px;
+  padding-right: 13px;
+}
 .bg-darken {
   background-color: #00000040;
   padding: 10px;

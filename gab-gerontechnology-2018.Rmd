@@ -77,34 +77,36 @@ duo_accent(
     ".ngram-example code" = list(
       "font-size" = "1.5em",
       "word-wrap" = "break-word",
-      color = "#555"
-    ),
+      color       = "#555"),
     "ul.words" = list("list-style" = "none"),
     ".words li, .word" = list(
-      "font-family" = "IBM Plex Mono, Monaco, monospace",
+      "font-family"      = "IBM Plex Mono, Monaco, monospace",
       "background-color" = "#eee",
-      "padding-left" = "8px",
-      "padding-right" = "8px",
-      "margin-bottom" = "6px",
-      "width" = "275px",
-      "white-space" = "nowrap",
-      "border" = "1px #aaa solid"),
+      "padding-left"     = "8px",
+      "padding-right"    = "8px",
+      "margin-bottom"    = "6px",
+      "width"            = "275px",
+      "white-space"      = "nowrap",
+      "border"           = "1px #aaa solid"),
     "li" = list("margin-bottom" = "0.4em"),
     ".box-light" = list(
-      background = "rgba(255,255,255,0.85)",
+      background      = "rgba(255,255,255,0.85)",
       "border-radius" = "2px",
-      display = "inline-block",
-      width = "75%",
-      margin = "1rem",
-      position = "relative",
-      "box-shadow" = "0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22)",
-      "padding" = "1em 1em 1em 2em"
-    ),
-    ".bg-darken" = list("background-color" = "#00000040",
-                        "padding" = "10px"),
+      display         = "inline-block",
+      width           = "75%",
+      margin          = "1rem",
+      position        = "relative",
+      "box-shadow"    = "0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22)",
+      "padding"       = "1em 1em 1em 2em"),
+    "#table-results td, #table-results th" = list(
+      "padding-left"  = "13px",
+      "padding-right" = "13px"),
+    ".bg-darken" = list(
+      "background-color" = "#00000040",
+      "padding"          = "10px"),
     ".bg-lighten" = list(
       "background-color" = "#FFFFFF70",
-      "padding" = "15px")
+      "padding"          = "15px")
   )
 )
 ```
@@ -396,6 +398,7 @@ Represent sensor events as daily *event sequences*
 example_sequence <- "IiIAEFfFfA0AE0EGAgEAIiIAEIiIiOiIGAgEIIIAE0AE0AEAAE0A0AAEIiIFfFfAEA0AEAE0AEEAAEAEAA0AIiI0AEIiI0IIiI0"
 example_sequence <- "IiIAEFfFf0AE0AIiiOIiIA0AEGg0GAgEIiIA0AEAA0A0AGgE0A0AEAEA0AFfIiIIEAFGgAf0FfAIiIA0AE0AEIiII0IiI0"
 
+# TODO: highligh letters as unencoded event appears
 cat(".ngram-example[", "<code>", example_sequence, "</code>", "]", sep="\n")
 ```
 
@@ -516,6 +519,8 @@ layout:true
 ## Results: Activity Profiles
 
 ```{r results-ap-table}
+day_names <- colnames(results_ap$summary_overall_final)[-1]
+day_names <- sub(" ", "<br>", day_names)
 results_ap$summary_overall_final %>% 
   mutate_if(is.numeric, function(x) {
     x <- sprintf("%0.3f", x)
@@ -529,6 +534,9 @@ results_ap$summary_overall_final %>%
   column_to_rownames("metric") %>% 
   knitr::kable(
     format="html",
+    col.names = day_names,
+    align = "r",
+    table.attr = 'id="table-results"',
     escape = FALSE)
 ```
 <br>
