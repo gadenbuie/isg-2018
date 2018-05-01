@@ -169,8 +169,17 @@ table.dataTable.hover tbody tr:hover, table.dataTable.display tbody tr:hover {
   font-weight: 300;
   margin-bottom: 5.5em;
 }
+hr {
+  height: 2px;
+  color: #CFC493;
+  background-color: #CFC493;
+  border-radius: 5px;
+}
 .title-slide h3 {
   margin: 10px;
+}
+.inverse {
+  font-weight: 300;
 }
 .huge {
   font-size: 3em;

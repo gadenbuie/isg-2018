@@ -65,7 +65,13 @@ duo_accent(
       "font-size"     = "30px",
       "font-weight"   = "300",
       "margin-bottom" = "5.5em"),
+    hr = list(
+      height = "2px",
+      color = usf_gold,
+      "background-color" = usf_gold,
+      "border-radius" = "5px"),
     ".title-slide h3" = list("margin" = "10px"),
+    ".inverse"        = list("font-weight" = "300"),
     ".huge"           = list("font-size" = "3em"),
     ".bigger"         = list("font-size" = "40px"),
     ".big"            = list("font-size" = "1.5em"),
@@ -287,13 +293,15 @@ class: inverse middle
 
 ## Research Objective
 
+<hr>
+
 .bigger.white[
-_Can we effectively use<br>
+Can we effectively use<br>
 passively-recorded<br>
 unlabelled sensor data<br>
 to characterize lifestyle<br>
 activity patterns and enable<br>
-detection of changes in routine?_
+detection of changes in routine?
 ]
 
 ???
