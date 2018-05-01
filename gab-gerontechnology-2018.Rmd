@@ -27,8 +27,12 @@ purrr::walk(pkgs, library, character.only = TRUE, warn.conflicts = FALSE, quietl
 # source(here::here('analyses/informs2017/informs2017-1-exp.R'))
 owd <- setwd("/Users/garrickaden-buie/Dropbox/USF/activityProfiles/analyses/informs2017/")
 source("informs2017-1-exp.R")
-setwd(owd)
 results_ap <- results
+rm("results")
+setwd(owd)
+
+setCacheDir("/Users/garrickaden-buie/Dropbox/USF/activityProfiles/data-cache/ch6")
+simpleCache("dat_ch6_res_core")
 ```
 
 ```{r xaringan-themer, include=FALSE, cache=TRUE}
@@ -94,6 +98,7 @@ duo_accent(
       "width"            = "275px",
       "white-space"      = "nowrap",
       "border"           = "1px #aaa solid"),
+    ".notes-list > ul" = list("list-style" = "none"),
     "li" = list("margin-bottom" = "0.4em"),
     ".box-light" = list(
       background      = "rgba(255,255,255,0.85)",
@@ -597,9 +602,9 @@ g <- results_ap$summary_overall %>%
   ) %>% 
   {
     ggplot(.) +
-      aes(x = days, y = value, color = house_name) + 
-      geom_point(size = 2.) +
-      geom_line(size = 1.25, alpha = 0.5) +
+      aes(x = days, y = value) + 
+      geom_point(aes(color = house_name), size = 2.) +
+      geom_line(aes(color = house_name), size = 1.25, alpha = 0.5) +
       guides(color = FALSE) +
       ylim(0.85, 1) +
       scale_color_manual(values = usf_accent[-1])+
@@ -632,24 +637,106 @@ Plotting **F Measure** (F1): balance of precision and recall
 28-42 days ok (4, 6 wk)
 
 ---
-layout: true
-## WIP: Behavior Change Detection
----
+layout: false
+## Behavior Change Detection
 
-1. Builds on AP experiment, but comparing occupant to self
+```{r behavior-change-settings}
+OVERALL_N_DAYS <- c(7, 14, 28, 56)
+BS_ITERS <- 1000
+# OVERALL_N_DAYS <- c(7, 28)
+BS_ITERS <- 100
+used_dictionary <- ap:::dictionary_global
+SINGLE_PAUSE <- TRUE
+```
+
+1. Compare occupant's recent activity to previous behavior
+    - Baseline period
+    - Sliding windows
 
 1. Permutation-based methods for change detection
     - What is normal variation vs. anomaly/change?
-    
-1. Baseline vs. sliding window
 
-1. Goal: Sensitivity over specificity
+1. Alert caregivers or system operators
 
 ???
 
-Notes
+.notes-list[
+- Having validated that the activity profiles are capable 
+- of summarizing the activity patterns of an occupant,
+- we now turn to the task of behavior change detection
+
+
+- compare occupant's recent activity to previous behavior
+- previous behavior is either a baseline period of normalcy
+- or sliding windows
+
+- Given that KL-dist is a scale-less distance metric,
+- need to establish bounds guidelines for expected similarity
+
+- Overall, our goal is to bring abnormalities to the attention of caregiver
+- human review and intervention is expected
+- and system issues are equally requiring of attention
+]
 
 ---
+layout: true
+## Permutation-Based Comparison
+---
+
+```{r permutation-setup}
+plot_day_examples <- function(ws, shuffle = FALSE) {
+  if (shuffle) {
+    stopifnot(length(unique(ws$label)) == 2)
+    w1 <- sample(0:1, nrow(ws)/2, replace = TRUE)
+    w2 <- 1 - w1
+    ws$label <- unique(ws$label)[c(w1, w2) + 1]
+  }
+  ws <- bind_rows(ws,
+    data_frame(
+      label = c("W1", "W2"),
+      x = paste0("W", 1:2),
+      y = c(-0.25, -0.25)
+    )
+  )
+  if (shuffle) ws$x <- c("W1" = "W*1", "W2" = "W*2")[ws$x]
+  ws$label <- factor(ws$label, c("w1", "w2", "W1", "W2"))
+  ggplot(ws, aes(x, y, fill = label, color = label)) + 
+    geom_tile(width = 0.9, height = 0.9, color = "black") + 
+    geom_hline(yintercept = 0.375, color = 'black', size = 1.25) +
+    coord_equal() + 
+    guides(fill = FALSE) + 
+    labs(x = "", y = "") + 
+    # ylim(-0.75, 10.5) +
+    scale_y_continuous(limits = c(-0.75, 10.5), expand = c(0,0))+
+    # scale_fill_manual(values = c(
+    #   "#7FB1C1", # lighten_color(usf_accent[7], 0.5)
+    #   usf_accent[c(5, 7, 3)])) +
+    scale_fill_manual(values = usf_accent[c(4, 1, 7, 3)]) + 
+    theme_minimal(23) + 
+    theme(
+      plot.margin = margin(0, 0, 0, 0),
+      panel.grid = element_blank(), 
+      axis.text.y = element_blank()
+    )
+}
+
+ws <- data_frame(
+  label = c(rep("w1", 10), rep("w2", 10)),
+  x = c(rep("W1", 10), rep("W2", 10)),
+  y = rep(1:10, 2)
+)
+```
+
+```{r permutation-plots}
+permuted_plots <- list()
+set.seed(44)
+for (i in 1:4) {
+  permuted_plots[[i]] <- plot_day_examples(ws, i > 1)
+  gg <- cowplot::plot_grid(plotlist = permuted_plots, ncol = 4)
+  print(gg)
+  cat("\n\n---\n\n")
+}
+```
 
 - bag of event *n*-grams method was first validated as a supervised
 classification problem

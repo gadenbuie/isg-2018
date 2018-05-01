@@ -223,6 +223,9 @@ ul.words {
   white-space: nowrap;
   border: 1px #aaa solid;
 }
+.notes-list > ul {
+  list-style: none;
+}
 li {
   margin-bottom: 0.4em;
 }

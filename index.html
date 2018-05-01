@@ -630,22 +630,60 @@ Plotting **F Measure** (F1): balance of precision and recall
 28-42 days ok (4, 6 wk)
 
 ---
-layout: true
-## WIP: Behavior Change Detection
----
+layout: false
+## Behavior Change Detection
 
-1. Builds on AP experiment, but comparing occupant to self
+
+
+1. Compare occupant's recent activity to previous behavior
+    - Baseline period
+    - Sliding windows
 
 1. Permutation-based methods for change detection
     - What is normal variation vs. anomaly/change?
-    
-1. Baseline vs. sliding window
 
-1. Goal: Sensitivity over specificity
+1. Alert caregivers or system operators
 
 ???
 
-Notes
+.notes-list[
+- Having validated that the activity profiles are capable 
+- of summarizing the activity patterns of an occupant,
+- we now turn to the task of behavior change detection
+
+
+- compare occupant's recent activity to previous behavior
+- previous behavior is either a baseline period of normalcy
+- or sliding windows
+
+- Given that KL-dist is a scale-less distance metric,
+- need to establish bounds guidelines for expected similarity
+
+- Overall, our goal is to bring abnormalities to the attention of caregiver
+- human review and intervention is expected
+- and system issues are equally requiring of attention
+]
+
+---
+layout: true
+## Permutation-Based Comparison
+---
+
+
+
+&lt;img src="gab-gerontechnology-2018_files/figure-html/permutation-plots-1.png" width="720" /&gt;
+
+---
+
+&lt;img src="gab-gerontechnology-2018_files/figure-html/permutation-plots-2.png" width="720" /&gt;
+
+---
+
+&lt;img src="gab-gerontechnology-2018_files/figure-html/permutation-plots-3.png" width="720" /&gt;
+
+---
+
+&lt;img src="gab-gerontechnology-2018_files/figure-html/permutation-plots-4.png" width="720" /&gt;
 
 ---
 
