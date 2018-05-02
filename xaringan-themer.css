@@ -233,11 +233,28 @@ li {
   background: rgba(255,255,255,0.85);
   border-radius: 2px;
   display: inline-block;
-  width: 75%;
   margin: 1rem;
-  position: relative;
   box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
   padding: 1em 1em 1em 2em;
+}
+.box-right {
+  position: absolute;
+  bottom: 50%;
+  right: 0%;
+  padding-left: 30px;
+  padding-right: 30px;
+  margin: 0;
+  border-radius: 2px 0 0 2px;
+}
+.box-bottom {
+  border-radius: 2px 2px 0 0 ;
+  position: absolute;
+  bottom: 0;
+  left: 5%;
+  right: 5%;
+  text-align: center;
+  margin: 0;
+  padding: 15px;
 }
 #table-results td, #table-results th {
   padding-left: 13px;

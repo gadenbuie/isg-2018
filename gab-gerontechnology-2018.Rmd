@@ -17,13 +17,15 @@ output:
 
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
-knitr::opts_chunk$set(echo = FALSE, results = "asis", fig.height = 7.5, fig.width = 10, fig.retina = 2)
+knitr::opts_chunk$set(echo = FALSE, cache = TRUE, results = "asis", fig.height = 7.5, fig.width = 10, fig.retina = 2)
 library(tidyverse)
 library(ap)
 
 pkgs <- c("dplyr", "purrr", "stringr", "ggplot2", "simpleCache", "ap")
 purrr::walk(pkgs, library, character.only = TRUE, warn.conflicts = FALSE, quietly = TRUE)
+```
 
+```{r import-data, include=FALSE}
 # source(here::here('analyses/informs2017/informs2017-1-exp.R'))
 owd <- setwd("/Users/garrickaden-buie/Dropbox/USF/activityProfiles/analyses/informs2017/")
 source("informs2017-1-exp.R")
@@ -104,11 +106,28 @@ duo_accent(
       background      = "rgba(255,255,255,0.85)",
       "border-radius" = "2px",
       display         = "inline-block",
-      width           = "75%",
       margin          = "1rem",
-      position        = "relative",
       "box-shadow"    = "0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22)",
       "padding"       = "1em 1em 1em 2em"),
+    ".box-right" = list(
+      position = "absolute",
+      bottom = "50%",
+      right = "0%",
+      "padding-left" = "30px",
+      "padding-right" = "30px",
+      margin = "0",
+      "border-radius" = "2px 0 0 2px"
+    ),
+    ".box-bottom" = list(
+      "border-radius" = "2px 2px 0 0 ",
+      "position" = "absolute",
+      "bottom" = "0",
+      "left" = "5%",
+      "right" = "5%",
+      "text-align" = "center",
+      "margin" = "0",
+      "padding" = "15px"
+    ),
     "#table-results td, #table-results th" = list(
       "padding-left"  = "13px",
       "padding-right" = "13px"),
@@ -158,6 +177,11 @@ exclude: true
 1. Behavior Change Detection
 
 ---
+class: bottom center
+background-image: url(images/participant-seated.jpg)
+background-size: cover
+
+---
 background-image: url(images/createhealthlogo.png)
 background-size: 66%
 background-position: 50% 5%
@@ -182,18 +206,20 @@ CH's research focuses on
 - in particular at the intersection of community and organizational health system components.
 
 ---
-background-image: url(images/homesense-over-shoulder3.jpg)
-background-size: 100%
-background-position: 50% 160%
+background-image: url(images/participant-pointing-sensor.jpg)
+background-size: cover
+class: right middle
 
-## HomeSense
+.box-right.box-light[
+# HomeSense
+]
+
+???
 
 - Unobtrusive wireless sensors
 - Central data collection and processing
 - System and inventory management backend
 - Website for study participants and family
-
-???
 
 Today's talk will focus on a central component of CH's research: *HomeSense*.
 
@@ -216,12 +242,10 @@ The main compenents of the system are
 
 ---
 class: bottom center
-background-image: url(images/woman-seated-patio-1500.jpg)
-background-size: 100%
-background-position: top left
-layout: true
----
-.big[_I like the idea that my kids feel really secure, knowing that I’m on the other side of the country._]
+background-image: url(images/participant-smiling-computer.jpg)
+background-size: cover
+
+.box-bottom.box-light.big[_I like the idea that my kids feel really secure, knowing that I’m on the other side of the country._]
 
 ???
 
@@ -231,20 +255,25 @@ who described their experience with HomeSense, saying...
 
 
 ---
+class: bottom center
+background-image: url(images/homesense-over-shoulder3.jpg)
+background-size: cover
 count:false
-.big[_This is a great non-intrusive system that makes me at ease, makes my family and I feel more safe and connected._]
+
+.box-bottom.box-light.big[_This is a great non-intrusive system that<br>makes me at ease, makes my family and I<br>feel more safe and connected._]
 
 ---
 layout:false
 background-image: url(images/villages-flyover.png)
-background-height: 100%
+background-size: 100%
 class: bottom, center
-exclude: true
 
 .box-light[
 ### The Villages, FL
 
 .left[
+TODO: Talk about villages to orient the group
+
 - Something
 
 - Something
@@ -372,7 +401,7 @@ Each of the homes have similar floorplan & sensor layout
 
 Because sensor installations varied according to floorplan
 we selected a subset of participants with longterm participation
-and identical sensor layouts.
+and standard sensor layouts.
 
 ---
 background-image: url(images/simple-exp-covered.png)
