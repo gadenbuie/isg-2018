@@ -31,13 +31,13 @@ purrr::walk(pkgs, library, character.only = TRUE, warn.conflicts = FALSE, quietl
 
 ```{r import-data, include=FALSE}
 # source(here::here('analyses/informs2017/informs2017-1-exp.R'))
-owd <- setwd("/Users/garrickaden-buie/Dropbox/USF/activityProfiles/analyses/informs2017/")
+owd <- setwd("~/Dropbox/USF/activityProfiles/analyses/informs2017/")
 source("informs2017-1-exp.R")
 results_ap <- results
 rm("results")
 setwd(owd)
 
-setCacheDir("/Users/garrickaden-buie/Dropbox/USF/activityProfiles/data-cache/ch6")
+setCacheDir("~/Dropbox/USF/activityProfiles/data-cache/ch6")
 simpleCache("dat_ch6_res_core")
 ```
 
@@ -146,30 +146,6 @@ background-image: url(images/participant-seated.jpg)
 background-size: cover
 
 ---
-background-image: url(images/createhealthlogo.png)
-background-size: 66%
-background-position: 50% 5%
-class: bottom, center
-
-.big[
-![](images/createhealth-team.jpg)<br><br>
-`usf.edu/engineering/create-health`<br><br>
-]
-
-???
-
-CREATE Health 
-- is an **interdisciplinary team** 
-- of ENG & PUB HEALTH students & researchers
-- dedicated to improving the health and quality of life of aging populations
-- through the use of technology
-
-CH's research focuses on 
-- alleviating the burdens, financial and physical, of chronic disease treatment 
-- by examining how technology can improve healthcare delivery and support, 
-- in particular at the intersection of community and organizational health system components.
-
----
 background-image: url(images/participant-pointing-sensor.jpg)
 background-size: cover
 class: right middle
@@ -219,35 +195,95 @@ who described their experience with HomeSense, saying...
 
 
 ---
-class: bottom center
-background-image: url(images/homesense-over-shoulder3.jpg)
-background-size: cover
+class: bottom center bg-full
+background-image: url(images/participant-computer-pointing.jpg)
 count:false
 
-.box-bottom.box-light.big[_This is a great non-intrusive system that<br>makes me at ease, makes my family and I<br>feel more safe and connected._]
+.box-bottom.box-light.big[_This is a great non-intrusive system<br>that makes me at ease, makes my family and <br>I feel more safe and connected._]
+
+---
+background-image: url(images/createhealthlogo.png)
+background-size: 66%
+background-position: 50% 5%
+class: bottom, center
+
+.big[
+![](images/createhealth-team.jpg)<br><br>
+`usf.edu/engineering/create-health`<br><br>
+]
+
+???
+
+CREATE Health 
+- is an **interdisciplinary team** 
+- of ENG & PUB HEALTH students & researchers
+- dedicated to improving the health and quality of life of aging populations
+- through the use of technology
+
+CH's research focuses on 
+- alleviating the burdens, financial and physical, of chronic disease treatment 
+- by examining how technology can improve healthcare delivery and support, 
+- in particular at the intersection of community and organizational health system components.
 
 ---
 layout:false
-background-image: url(images/villages-flyover.png)
-background-size: 100%
-class: bottom, center
+class: bottom, center, bg-full
+<!-- background-size: cover -->
+<!-- background-image: url(images/villages-flyover.png) -->
 
-.box-light[
-### The Villages, FL
+<video loop muted autoplay poster="images/villages-flyover.png" class="bg-video">
+    <source src="images/villages-flyover2.mp4" type="video/mp4">
+</video>
 
-.left[
-TODO: Talk about villages to orient the group
+.box-center-bottom.box-light[
+<img src="images/thevillages-logo.svg" width="80%">
 
-- Something
+<div style="text-align: left; padding-left: 60px">
+<ul>
+<li>The largest retirement community in US</li>
+<li>115,000 residents in 50,000 homes</li>
+<li>75 miles north of Tampa, FL</li>
+<li>Average age: 62 (M) and 60 (F)</li>
+<ul>
+</div>
+]
+<!-- <div style="padding: 15px">&nbsp;</div> -->
 
-- Something
-
-- Something
-]]
-<div style="padding: 15px">&nbsp;</div>
+???
+.notes-list[
+- 32 sq miles
+- 3 town squares
+- 63 rec centers
+- legend has it a Villager can play 18 holes of gold for 30 straight days without repeating
+]
 
 ---
-layout: false
+class: inverse middle
+
+## Research Objective
+
+<hr>
+
+.bigger.white[
+Can we effectively use<br>
+passively-recorded<br>
+unlabelled sensor data<br>
+to characterize lifestyle<br>
+activity patterns and enable<br>
+detection of changes in routine?
+]
+
+???
+
+To summarize, our research objective is centered on the question...
+
+We will address this question from two angles:
+
+1. Defining *lifestyle activity pattern*
+
+2. Using the AP for behavior change detection
+
+---
 
 ### Lifestyle Reassurance
 
@@ -285,32 +321,6 @@ especially natural patterns of Daily Living –<br>
 we need an approach that does not require
 explicit, high-level activity labels
 and that can effectively make use of real-world, natural SH act. data
-
----
-class: inverse middle
-
-## Research Objective
-
-<hr>
-
-.bigger.white[
-Can we effectively use<br>
-passively-recorded<br>
-unlabelled sensor data<br>
-to characterize lifestyle<br>
-activity patterns and enable<br>
-detection of changes in routine?
-]
-
-???
-
-To summarize, our research objective is centered on the question...
-
-We will address this question from two angles:
-
-1. Defining *lifestyle activity pattern*
-
-2. Using the AP for behavior change detection
 
 ---
 ## Outline
