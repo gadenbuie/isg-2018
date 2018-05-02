@@ -169,7 +169,7 @@ table.dataTable.hover tbody tr:hover, table.dataTable.display tbody tr:hover {
   font-weight: 300;
   margin-bottom: 5.5em;
 }
-hr {
+.remark-slide-content hr {
   height: 2px;
   color: #CFC493;
   background-color: #CFC493;
@@ -180,30 +180,6 @@ hr {
 }
 .inverse {
   font-weight: 300;
-}
-.huge {
-  font-size: 3em;
-}
-.bigger {
-  font-size: 40px;
-}
-.big {
-  font-size: 1.5em;
-}
-.white {
-  color: #FFF;
-}
-.skip-header {
-  margin-top: 33%;
-}
-.mt-3 {
-  margin-top: 3em;
-}
-.hl {
-  background-color: #ffff88 !important;
-}
-.hl-text {
-  color: #BB1847;
 }
 .ngram-example code {
   font-size: 1.5em;
@@ -229,42 +205,7 @@ ul.words {
 li {
   margin-bottom: 0.4em;
 }
-.box-light {
-  background: rgba(255,255,255,0.85);
-  border-radius: 2px;
-  display: inline-block;
-  margin: 1rem;
-  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
-  padding: 1em 1em 1em 2em;
-}
-.box-right {
-  position: absolute;
-  bottom: 50%;
-  right: 0%;
-  padding-left: 30px;
-  padding-right: 30px;
-  margin: 0;
-  border-radius: 2px 0 0 2px;
-}
-.box-bottom {
-  border-radius: 2px 2px 0 0 ;
-  position: absolute;
-  bottom: 0;
-  left: 5%;
-  right: 5%;
-  text-align: center;
-  margin: 0;
-  padding: 15px;
-}
 #table-results td, #table-results th {
   padding-left: 13px;
   padding-right: 13px;
-}
-.bg-darken {
-  background-color: #00000040;
-  padding: 10px;
-}
-.bg-lighten {
-  background-color: #FFFFFF70;
-  padding: 15px;
 }

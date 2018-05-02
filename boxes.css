@@ -1,0 +1,36 @@
+.box-light {
+  background: rgba(255,255,255,0.85);
+  border-radius: 2px;
+  display: inline-block;
+  margin: 1rem;
+  margin-bottom: 7%;
+  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+  padding: 1em 2em;
+}
+.box-right {
+  position: absolute;
+  bottom: 50%;
+  right: 0%;
+  padding-left: 75px;
+  padding-right: 50px;
+  margin: 0;
+  border-radius: 2px 0 0 2px;
+}
+.box-bottom {
+  border-radius: 2px 2px 0 0 ;
+  position: absolute;
+  bottom: 0;
+  left: 5%;
+  right: 5%;
+  text-align: center;
+  margin: 0;
+  padding: 15px;
+}
+.box-center-bottom {
+  position: absolute;
+  bottom: 5%;
+  left: 15%;
+  right: 15%;
+  margin: 0;
+  padding: 20px;
+}

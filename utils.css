@@ -1,0 +1,24 @@
+.huge {
+  font-size: 3em;
+}
+.bigger {
+  font-size: 40px;
+}
+.big {
+  font-size: 1.5em;
+}
+.white {
+  color: #FFF;
+}
+.skip-header {
+  margin-top: 33%;
+}
+.mt-3 {
+  margin-top: 3em;
+}
+.hl {
+  background-color: #ffff88 !important;
+}
+.hl-text {
+  color: #BB1847;
+}

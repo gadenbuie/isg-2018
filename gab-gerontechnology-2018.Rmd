@@ -6,7 +6,11 @@ date: 'May 7, 2018<br><i>ISG Gerontechnology 2018</i>'
 output:
   xaringan::moon_reader:
     lib_dir: libs
-    css: xaringan-themer.css
+    css: 
+      - xaringan-themer.css
+      - boxes.css
+      - bg-video.css
+      - utils.css
     nature:
       #ratio: "16:9"
       highlightStyle: github
@@ -71,21 +75,13 @@ duo_accent(
       "font-size"     = "30px",
       "font-weight"   = "300",
       "margin-bottom" = "5.5em"),
-    hr = list(
+    ".remark-slide-content hr" = list(
       height = "2px",
       color = usf_gold,
       "background-color" = usf_gold,
       "border-radius" = "5px"),
     ".title-slide h3" = list("margin" = "10px"),
     ".inverse"        = list("font-weight" = "300"),
-    ".huge"           = list("font-size" = "3em"),
-    ".bigger"         = list("font-size" = "40px"),
-    ".big"            = list("font-size" = "1.5em"),
-    ".white"          = list(color = "#FFF"),
-    ".skip-header"    = list("margin-top" = "33%"),
-    ".mt-3"           = list("margin-top" = "3em"),
-    ".hl"             = list("background-color" = "#ffff88 !important"),
-    ".hl-text"        = list("color" = "#BB1847"),
     ".ngram-example code" = list(
       "font-size" = "1.5em",
       "word-wrap" = "break-word",
@@ -102,41 +98,9 @@ duo_accent(
       "border"           = "1px #aaa solid"),
     ".notes-list > ul" = list("list-style" = "none"),
     "li" = list("margin-bottom" = "0.4em"),
-    ".box-light" = list(
-      background      = "rgba(255,255,255,0.85)",
-      "border-radius" = "2px",
-      display         = "inline-block",
-      margin          = "1rem",
-      "box-shadow"    = "0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22)",
-      "padding"       = "1em 1em 1em 2em"),
-    ".box-right" = list(
-      position = "absolute",
-      bottom = "50%",
-      right = "0%",
-      "padding-left" = "30px",
-      "padding-right" = "30px",
-      margin = "0",
-      "border-radius" = "2px 0 0 2px"
-    ),
-    ".box-bottom" = list(
-      "border-radius" = "2px 2px 0 0 ",
-      "position" = "absolute",
-      "bottom" = "0",
-      "left" = "5%",
-      "right" = "5%",
-      "text-align" = "center",
-      "margin" = "0",
-      "padding" = "15px"
-    ),
     "#table-results td, #table-results th" = list(
       "padding-left"  = "13px",
-      "padding-right" = "13px"),
-    ".bg-darken" = list(
-      "background-color" = "#00000040",
-      "padding"          = "10px"),
-    ".bg-lighten" = list(
-      "background-color" = "#FFFFFF70",
-      "padding"          = "15px")
+      "padding-right" = "13px")
   )
 )
 ```
