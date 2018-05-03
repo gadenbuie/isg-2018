@@ -7,12 +7,11 @@ output:
   xaringan::moon_reader:
     lib_dir: libs
     css: 
+      - css/fontawesome-all.min.css
       - xaringan-themer.css
-      - boxes.css
-      - bg-video.css
-      - utils.css
-    includes:
-      in_header: header.html
+      - css/boxes.css
+      - css/bg-video.css
+      - css/utils.css
     nature:
       #ratio: "16:9"
       highlightStyle: github
