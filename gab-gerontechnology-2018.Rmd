@@ -453,11 +453,11 @@ emojdict <- dict %>%
   # replace_name("InBedroomMaster", "\U1F6CF") %>% 
   replace_name("InLivingRoom", '<i class="fas fa-couch" style="color: #DBE442"></i> ') %>% 
   replace_name("InKitchen", '<i class="fas fa-utensils" style="color: #9CCB3B"></i> ') %>% 
-  replace_name("InBathroomMaster", '<i class="fas fa-bath" style="color: #009374"></i> ') %>%
+  replace_name("InBathroomMaster", '<i class="fas fa-bath" style="color: #006484"></i> ') %>%
   replace_name("InBedroomMaster", '<i class="fas fa-bed" style="color: #29AFCE"></i> ') %>% 
   replace_name("!OpenedFrontDoor", '<i class="fas fa-sign-in-alt" style="color: #a97a7a"></i>&nbsp;') %>% 
-  replace_name("OpenedFrontDoor", '<i class="fas fa-sign-out-alt" style="color: #74a073"></i>&nbsp;') %>% 
-  replace_name("Pause", '<i class="fas fa-pause-circle" style="color: #006484"></i>')
+  replace_name("OpenedFrontDoor", '<i class="fas fa-sign-out-alt" style="color: #009374"></i>&nbsp;') %>% 
+  replace_name("Pause", '<i class="fas fa-pause-circle" style="color: #466069"></i>')
 example_actual <- ap:::decode(str_split(example_sequence, "")[[1]], emojdict)
 for (i in 1:10) {
   if (i %in% c(6, 8)) next
