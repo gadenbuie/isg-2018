@@ -416,11 +416,10 @@ Represent sensor events as daily *event sequences*
 example_sequence <- "IiIAEFfFfA0AE0EGAgEAIiIAEIiIiOiIGAgEIIIAE0AE0AEAAE0A0AAEIiIFfFfAEA0AEAE0AEEAAEAEAA0AIiI0AEIiI0IIiI0"
 example_sequence <- "IiIAEFfFf0AE0AIiiOIiIA0AEGg0GAgEIiIA0AEAA0A0AGgE0A0AEAEA0AFfIiIIEAFGgAf0FfAIiIA0AE0AEIiII0IiI0"
 
-# TODO: highligh letters as unencoded event appears
 cat(".ngram-example[", "<code>", example_sequence, "</code>", "]", sep="\n")
 ```
 
---
+---
 
 ```{r ngram-example-2, include=FALSE}
 dict <- dat$House003$dictionary
@@ -445,13 +444,9 @@ replace_name <- function(x, name, new_name) {
   names(x)[which(names(x) == name)] <- new_name
   x
 }
-# emojdict <- dict
-# emojdict["InLivingRoom"]     <- "\U1F6CB"
-# emojdict["InKitchen"]        <- "\U1F37D"
-# emojdict["InBathroomMaster"] <- "\U1F6C1"
-# emojdict["InBedroomMaster"]  <- "\U1F6CF"
-# emojdict["!OpenedFrontDoor"] <- "\U2B05 \U1F6AA"
-# emojdict["OpenedFrontDoor"]  <- "\U27A1 \U1F6AA"
+highlight_letters <- function(x, i, j) paste0(
+  if (i > 1) substring(x, 0, i-i), ".hl-text[", substring(x, i, j), "]", substring(x, j+1, nchar(x))
+)
 emojdict <- dict %>% 
   # replace_name("InLivingRoom", "\U1F6CB") %>% 
   # replace_name("InKitchen", "\U1F37D") %>% 
@@ -461,17 +456,22 @@ emojdict <- dict %>%
   replace_name("InKitchen", '<i class="fas fa-utensils" style="color: #9CCB3B"></i> ') %>% 
   replace_name("InBathroomMaster", '<i class="fas fa-bath" style="color: #009374"></i> ') %>%
   replace_name("InBedroomMaster", '<i class="fas fa-bed" style="color: #29AFCE"></i> ') %>% 
-  replace_name("!OpenedFrontDoor", '<i class="fas fa-sign-out-alt" style="color: #80B0A6"></i>&nbsp;') %>% 
-  replace_name("OpenedFrontDoor", '<i class="fas fa-sign-in-alt" style="color: #7396A0"></i>&nbsp;') %>% 
+  replace_name("!OpenedFrontDoor", '<i class="fas fa-sign-in-alt" style="color: #a97a7a"></i>&nbsp;') %>% 
+  replace_name("OpenedFrontDoor", '<i class="fas fa-sign-out-alt" style="color: #74a073"></i>&nbsp;') %>% 
   replace_name("Pause", '<i class="fas fa-pause-circle" style="color: #006484"></i>')
 example_actual <- ap:::decode(str_split(example_sequence, "")[[1]], emojdict)
-cat('<p class="huge" style="line-height: 1em">', 
-    paste0(#'<span class="word">', 
-           example_actual[1:10], 
-           #"</span>", 
-           c(rep("\n--\n", 5), "", "\n--\n", "", "\n--\n"), 
-           collapse = rep("&nbsp;", 4)),
-    "</p>")
+for (i in 1:10) {
+  if (i %in% c(6, 8)) next
+  cat("count: false\n\n")
+  cat(".ngram-example[", "<code>", highlight_letters(example_sequence, 1, i), "</code>", "]", sep="\n")
+  cat('<p class="huge" style="line-height: 1.5em">', 
+      if (i <= 5) example_actual[1:i] else paste0(c(example_actual[1:5], "<br>", example_actual[6:i])),
+      "</p>\n\n---\n\n")
+}
+```
+
+```{r ngram-example-repeat}
+cat(".ngram-example[", "<code>", example_sequence, "</code>", "]", sep="\n")
 ```
 
 ---
@@ -483,6 +483,7 @@ for (i in 1:7) {
   ngram <- substr(example_sequence, i, i+length_ngram-1)
   ngrams <- c(ngrams, ngram)
   cat(sep = "",
+    "count: false\n\n",
     ".ngram-example[\n<code>",
     substr(example_sequence, 0, i-1),
     ".word.hl-text.hl[",
@@ -495,7 +496,7 @@ for (i in 1:7) {
     if (i == 1) "\n\n--\n\n",
     if (length(ngrams)) paste0("\n\n**Bag of event n-grams**\n\n.word[", paste(ngrams, collapse = "] .word["), "]"),
     # if (length(ngrams)) paste0("\n\n**Bag of n-grams:**\n\n<ul class=\"words\"><li>", paste(ngrams, collapse = "</li><li>"), "</ul>"),
-    "\n\n---\ncount: false\n\n")
+    "\n\n---\n\n")
 }
 ```
 
