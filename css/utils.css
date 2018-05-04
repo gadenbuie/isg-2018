@@ -1,6 +1,9 @@
 .huge {
   font-size: 3em;
 }
+.small {
+  font-size: 0.7em;
+}
 .bigger {
   font-size: 40px;
 }

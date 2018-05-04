@@ -152,8 +152,41 @@ exclude: true
 class: bottom center
 background-image: url(images/participant-seated.jpg)
 background-size: cover
+layout: true
+---
+count: false
+
+???
+
+- I'd like to introduce you to one of the participants in our study, who I will 
+  call **Dorothy**.
+- Dorothy is between 75 and 80 years old, she's divorced, and she lives alone 
+  in her home in The Villages.
+- Overall, she's in great health. 
+- As a typical retiree living in the Sunshine State, she leads a highly active 
+  life involving an assortment of clubs and groups, dance classes at the 
+  recreation center, and frequent lunches and dinners in the town square with friends.
+- She lives alone, but she talks to her daughter regularly, even though she lives
+  on the other side of the country.
 
 ---
+count: false
+
+???
+
+- About a year or so ago, though, Dorothy's recurrent hip pain worsened and she and 
+  her doctor decided for hip replacement surgery.
+- She arrived at the hospital the day of the procedure only to find out that due 
+  to an insurance issue meant, she would have to wait another three months.
+- In the mean time, her mobility declined, she spent more time in bed, and she 
+  couldn't make it many of the activities she loved.
+- Her daughter had planned to visit during this time, but due to a family 
+  emergency she had to cancel her plans.
+- In the end surgery went well, Dorothy recovered quickly and a few months later
+  she was back to living the life she enjoyed.
+
+---
+layout: false
 background-image: url(images/participant-pointing-sensor.jpg)
 background-size: cover
 class: right middle
@@ -164,17 +197,70 @@ class: right middle
 
 ???
 
-- Unobtrusive wireless sensors
-- Central data collection and processing
-- System and inventory management backend
-- Website for study participants and family
+Fortunately, throughout this story, Dorothy's daughter was able to stay in 
+touch with her mother's daily activities thanks to the home sensor system
+we installed in Dorothy's home.
 
-Today's talk will focus on a central component of CH's research: *HomeSense*.
-
-HomeSense is 
-- a wireless sensor system developed by our team
-- with the goal of monitoring of daily activities
+We call this system **HomeSense**, and
+- the goal the system and our study is to better monitor the daily activities of older adults
 - and with a particular focus on activities that signal health changes or influence health outcomes
+
+---
+layout: false
+## Aging in Place
+
+.pull-left[
+- Americans 65+ will **double** from 2014 to **98M** in 2060
+
+- Decrease in available traditional family caregivers
+
+- 2/3 manage multiple chronic conditions
+
+- Strong preference to<br>**age in place**
+]
+
+.pull-right[
+![](images/prb--aging-us-pop-bulletin--plots.png)
+]
+
+.footnote.small[Mather et al. (2015).<br>Aging in the United States. [pbr.org](http://www.pbr.org/)]
+
+???
+
+Dorothy's story highlights the challenges we face as a society in how we approach
+aging and manage health care for older adults.
+
+1. Part of a growing population of older adults that is expected to double to 98M by 2060 (from 2014 population)
+
+2. More older adults are divorced, live alone than ever before, meaning weaker ties to traditional family caregivers, either by distance or relationship
+
+3. Simultaneously, managing chronic illness rather than acute episodes
+
+4. But overall strong preference to age in place, remain in their own homes and communities, for as long as possible **TODO: stat and reference from proposal**
+
+---
+
+## The HomeSense System
+
+.pull-left[
+![](images/sensors.png)
+
+
+.huge.center[
+<i class="fas fa-bolt" style="color: #FFC107"></i><br>
+<i class="fas fa-database" style="color: #28A745"></i>&nbsp;
+<i class="fas fa-table" style="color: #17A2B8"></i>&nbsp;
+<i class="fas fa-bell" style="color: #DC3545"></i>
+]
+]
+
+.pull-right[
+![](images/wilson-admin-01-front-page.png)
+
+![](images/homesense.jpg)
+]
+
+???
 
 The main compenents of the system are
 - wireless sensors installed throughout the home
