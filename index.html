@@ -543,6 +543,8 @@ count: false
 **Compare two profiles**
 
 - Using Kullback-Leibler Symmetric Distance
+
+- `\(D_{KL} (P \Vert Q) = 0.331\)`
 ]
 
 .pull-right[
@@ -625,6 +627,8 @@ count: false
 KL Distance provides a distance measure between probability distributions.
 
 We use KL dist to compare frequencies across b-o-e n-grams (activity profiles)
+
+`\(D_{KL} (P \Vert Q) = \sum_{i} \left( p_i - q_i \right) \log \frac{p_i}{q_i}\)`
 
 ---
 layout: true
@@ -726,16 +730,6 @@ layout:true
 
 &lt;img src="gab-gerontechnology-2018_files/figure-html/results-ap-1.png" width="720" /&gt;
 
----
-count: false
-
-&lt;img src="gab-gerontechnology-2018_files/figure-html/results-ap-ungrouped-1.png" width="720" /&gt;
-
----
-count: false
-
-&lt;img src="gab-gerontechnology-2018_files/figure-html/results-ap-sel-1.png" width="720" /&gt;
-
 ???
 
 Note 42d (6w) maximizes performance across the board
@@ -745,6 +739,18 @@ Plotting **F Measure** (F1): balance of precision and recall
 (balanced measure of binary classification)
 
 28-42 days ok (4, 6 wk)
+
+---
+count: false
+exclude: true
+
+&lt;img src="gab-gerontechnology-2018_files/figure-html/results-ap-ungrouped-1.png" width="720" /&gt;
+
+---
+count: false
+exclude: true
+
+&lt;img src="gab-gerontechnology-2018_files/figure-html/results-ap-sel-1.png" width="720" /&gt;
 
 ---
 layout: false
@@ -796,11 +802,41 @@ layout: true
 
 ---
 
-&lt;img src="gab-gerontechnology-2018_files/figure-html/permutation-plots-3.png" width="720" /&gt;
+
+
+.full-plot[
+![](images/permutations4.gif)
+]
 
 ---
+layout: false
 
-&lt;img src="gab-gerontechnology-2018_files/figure-html/permutation-plots-4.png" width="720" /&gt;
+
+
+## Behavior Change Example
+
+&lt;img src="gab-gerontechnology-2018_files/figure-html/behavior-change-house013-1.png" width="720" /&gt;
+
+???
+
+- 2016-05-31 -- 2016-06-27
+    - June 2016 was an odd month, due to company in home
+- 2016-06-19 -- 2016-07-16
+    - Back to normalcy
+- 2016-08-01 -- 2016-08-28
+    - System wide change in data collection
+- 2016-10-21 -- 2016-11-17
+    - ??
+- 2016-12-04 -- 2017-01-02
+    - Company in home all of December
+- 2017-01-03 -- 2017-02-20
+    - Reduction in mobility leading up to surgery
+- 2017-03-24 -- 2017-04-20
+    - Post surgery
+- 2017-04-21 -- 2017-05-18
+    - Post recovery
+- 2017-11-09 -- 2017-12-06
+    - Holidays
 
 ---
 

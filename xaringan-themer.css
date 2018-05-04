@@ -181,6 +181,9 @@ table.dataTable.hover tbody tr:hover, table.dataTable.display tbody tr:hover {
 .inverse {
   font-weight: 300;
 }
+.pull-left p:first-child {
+  margin-top: 0;
+}
 .ngram-example code {
   font-size: 1.5em;
   word-wrap: break-word;
