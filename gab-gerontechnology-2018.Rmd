@@ -34,16 +34,18 @@ purrr::walk(pkgs, library, character.only = TRUE, warn.conflicts = FALSE, quietl
 
 ```{r import-data, include=FALSE}
 # source(here::here('analyses/informs2017/informs2017-1-exp.R'))
-owd <- setwd("~/Dropbox/USF/activityProfiles/analyses/informs2017/")
-source("informs2017-1-exp.R")
-results_ap <- results
-rm("results")
-setwd(owd)
+NGRAM_MIN <- 2
+NGRAM_MAX <- 6
+load("~/Dropbox/USF/activityProfiles/data-cache/informs2017/dat.RData")
+dat <- ret; rm('ret')
+load("~/Dropbox/USF/activityProfiles/data-cache/informs2017/results.RData")
+results <- ret; rm('ret')
 
 # setCacheDir("~/Dropbox/USF/activityProfiles/data-cache/ch6")
 # simpleCache("dat_ch6_res_core")
-load("~/Dropbox/USF/activityProfiles/data-cache/ch6/dat_ch6_res_core.RData")
-dat_ch6_res_core <- ret; rm("ret")
+houseXXX <- readRDS("~/Dropbox/USF/activityProfiles/data-cache/ch6/houseXXX.rds")
+# load("~/Dropbox/USF/activityProfiles/data-cache/ch6/res_ch6_baseline.RData")
+# res_baseline <- ret; rm('ret')
 ```
 
 ```{r xaringan-themer, include=FALSE, cache=TRUE}
@@ -402,6 +404,17 @@ interaction with entrance and exit doors and routinely used objects
 ---
 layout: true
 ## Activity Profiles
+
+???
+
+*Faux-animated slides*
+
+- Explain how sensor events are used, divided, processed
+- Given example of sensor events
+- String representation simply encodes a series of actions
+- To get bag of n-grams, take sliding window across event series
+- Gather and count each n-gram
+
 ---
 
 Represent sensor events as daily *event sequences*
@@ -531,6 +544,8 @@ ngramify_freq(example_sequence, NGRAM_MIN, NGRAM_MAX) %>%
 ]
 
 ???
+
+***
 
 KL Distance provides a distance measure between probability distributions.
 
@@ -687,7 +702,7 @@ g + annotate("rect", xmin = 39, xmax = 45, ymin=-Inf, ymax=Inf, fill = usf_gray,
 ```
 
 ---
-layout: false
+layout: true
 ## Behavior Change Detection
 
 ```{r behavior-change-settings}
@@ -700,38 +715,32 @@ SINGLE_PAUSE <- TRUE
 ```
 
 1. Compare occupant's recent activity to previous behavior
-    - Baseline period
-    - Sliding windows
 
 1. Permutation-based methods for change detection
     - What is normal variation vs. anomaly/change?
 
-1. Alert caregivers or system operators
+1. Alert caregivers or system operators to shifts in behavior patterns
 
 ???
 
-.notes-list[
-- Having validated that the activity profiles are capable 
-- of summarizing the activity patterns of an occupant,
-- we now turn to the task of behavior change detection
+- Having validated that the activity profiles are capable<br> 
+  of summarizing the activity patterns of an occupant,<br>
+  we now turn to the task of behavior change detection
 
 
-- compare occupant's recent activity to previous behavior
-- previous behavior is either a baseline period of normalcy
-- or sliding windows
+- compare occupant's recent activity to previous behavior<br>
+  previous behavior is either a baseline period of normalcy<br>
+  or sliding windows
 
-- Given that KL-dist is a scale-less distance metric,
-- need to establish bounds guidelines for expected similarity
+- Given that KL-dist is a scale-less distance metric,<br>
+  need to establish bounds guidelines for expected similarity
 
-- Overall, our goal is to bring abnormalities to the attention of caregiver
-- human review and intervention is expected
-- and system issues are equally requiring of attention
-]
+- Overall, our goal is to bring abnormalities to the attention of caregiver<br>
+  human review and intervention is expected<br>
+  and system issues are equally requiring of attention
 
 ---
-layout: true
-## Permutation-Based Comparison
----
+
 
 ```{r permutation-setup}
 plot_day_examples <- function(ws, shuffle = FALSE) {
@@ -771,23 +780,29 @@ plot_day_examples <- function(ws, shuffle = FALSE) {
 }
 
 ws <- data_frame(
-  label = c(rep("w1", 10), rep("w2", 10)),
-  x = c(rep("W1", 10), rep("W2", 10)),
-  y = c(11:20, 1:10)
+  label = c(rep("w2", 10), rep("w1", 10)),
+  x = c(rep("W2", 10), rep("W1", 10)),
+  y = 1:20
 )
 ```
 
-```{r permutation-plots, dependson="permutation-setup"}
+```{r permutation-plots, dependson="permutation-setup", fig.height = 3}
 permuted_plots <- list()
 set.seed(43)
 for (i in 1:4) {
   permuted_plots[[i]] <- plot_day_examples(ws, i > 1)
-  gg <- cowplot::plot_grid(plotlist = permuted_plots, nrow = 4)
-  if (i %in% 2:3) next
-  print(gg)
-  cat("\n\n---\n\n")
 }
+cowplot::plot_grid(permuted_plots[[1]], ncol = 2)
+cat("\n\n---\n\n")
+cowplot::plot_grid(
+  permuted_plots[[1]], 
+  cowplot::plot_grid(plotlist = permuted_plots[-1], ncol = 1),
+  ncol = 2, axis = "t")
 ```
+
+---
+layout: false
+## Permutation-Based Comparison
 
 ```{r comparing-distances, fig.height=7, include=FALSE}
 left_date = "2017-10-01"
@@ -840,18 +855,22 @@ single_plot <- function(i, ...) {
 }
 
 set.seed(42)
-m28_left <- filter_and_jitter(dat_ch6_res_core$House013$moving_28, left_date)
-m28_right <- filter_and_jitter(dat_ch6_res_core$House013$moving_28, right_date)
+m28_left <- filter_and_jitter(houseXXX$moving_28, left_date)
+m28_right <- filter_and_jitter(houseXXX$moving_28, right_date)
 ```
 
 .full-plot[
 ![](images/permutations4.gif)
 ]
 
+???
+
+Each shuffling of 
+
 ---
 layout: false
 
-```{r moving-window-plots, warning = FALSE, include=FALSE}
+```{r moving-window-plots, warning = FALSE, include=FALSE, eval=FALSE}
 plot_all_moving_by_house <- function(
   x, house = c("House004", "House005", "House008", "House013"),
   mask_date = FALSE,
@@ -921,9 +940,9 @@ plot_summarized_with_highlights <- function(dfm,
 
 
 cowplot::plot_grid(
-  plot_summarized_with_highlights(dat_ch6_res_core$House013$moving_14, 7, 14, mask_date = TRUE) +
+  plot_summarized_with_highlights(houseXXX$moving_14, 7, 14, mask_date = TRUE) +
     ggtitle("2 Week Sliding Windows"),
-  plot_summarized_with_highlights(dat_ch6_res_core$House013$moving_28, 14, 28, mask_date = TRUE) +
+  plot_summarized_with_highlights(houseXXX$moving_28, 14, 28, mask_date = TRUE) +
     ggtitle("4 Week Sliding Windows"),
   nrow = 2,
   align = 'v'
@@ -932,26 +951,80 @@ cowplot::plot_grid(
 
 ???
 
-- 2016-05-31 -- 2016-06-27
-    - June 2016 was an odd month, due to company in home
-- 2016-06-19 -- 2016-07-16
+- **June** (05-31 -- 06-27)
+    - June 20XX was an odd month, due to company in home
+- **Late June, Early July** (06-19 -- 07-16)
     - Back to normalcy
-- 2016-08-01 -- 2016-08-28
+- **August** 08-01 -- 08-28
     - System wide change in data collection
-- 2016-10-21 -- 2016-11-17
+- 10-21 -- 11-17
     - ??
-- 2016-12-04 -- 2017-01-02
+- **December** (12-04 -- 01-02)
     - Company in home all of December
-- 2017-01-03 -- 2017-02-20
+- **January** (01-03 -- 02-20)
     - Reduction in mobility leading up to surgery
-- 2017-03-24 -- 2017-04-20
+- **Late February** (03-24 -- 04-20)
     - Post surgery
-- 2017-04-21 -- 2017-05-18
+- **Late April** (04-21 -- 05-18)
     - Post recovery
-- 2017-11-09 -- 2017-12-06
+- **November** (11-09 -- 12-06)
     - Holidays
 
 ---
+
+## Looking Forward
+
+.pull-left[
+- Early alerting of caregivers or admin through dashboard or notifications
+
+- Couple behavior change with comparison to **baseline**
+
+- Use permutations to **explain differences**
+]
+
+.pull-right.center[
+![](images/chdash-05-overview-by-hour.png)
+<img src="images/notification-email.png" height="250px">
+]
+
+.footnote[
+Tulio 2016. arXiv:1602.04938
+]
+
+???
+
+.notes-list[
+- This work can be integrated into a dashboard or notification system
+  so that caregivers or admin can be alerted early as behavior patterns shift,
+  triggering more careful monitoring
+  
+- The method for behavior change identification works best on longer-term time horizons --
+  i.e. previous month was *unusual* -- but can be coupled with a comparison
+  to a baseline period, leading to more fine-grained comparison of
+  daily behaviors.
+  
+- The permutations-based method will be extended to provide more information
+  about the differences between windows, by looking at the contribution of
+  individual days, hours, or even event sequences over the various permutations.
+  **Local Interpretable Model-Agnostic Explanations (LIME)**
+]
+
+---
+class: title-slide, center, middle, white
+
+# Thank You
+
+## Questions?<br><br><br><code class="white">usf.edu/engineering/create-health</code>
+
+### Garrick Aden-Buie <br><code class="white">garrick@adenbuie.com</code>
+### University of South Florida
+
+
+---
+exclude: true
+
+## Extra stuff
+
 
 - bag of event *n*-grams method was first validated as a supervised
 classification problem
