@@ -27,4 +27,5 @@
 }
 .full-plot {
   padding-right: 40px;
+  max-height: 350px;
 }

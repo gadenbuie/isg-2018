@@ -39,7 +39,7 @@ NGRAM_MAX <- 6
 load("~/Dropbox/USF/activityProfiles/data-cache/informs2017/dat.RData")
 dat <- ret; rm('ret')
 load("~/Dropbox/USF/activityProfiles/data-cache/informs2017/results.RData")
-results <- ret; rm('ret')
+results_ap <- ret; rm('ret')
 
 # setCacheDir("~/Dropbox/USF/activityProfiles/data-cache/ch6")
 # simpleCache("dat_ch6_res_core")
@@ -59,21 +59,35 @@ duo_accent(
   header_font_google              = google_font("Merriweather", "400", "300", "300i"),
   code_font_google                = google_font("IBM Plex Mono"),
   text_font_weight                = "400",
-  text_font_size                  = "23px",
+  text_font_size                  = "20px",
   code_inline_color               = "#222",
-  text_slide_number_color         = usf_gray,
-  inverse_header_color            = "#FFF",
-  inverse_background_color        = usf_green,
+  text_slide_number_color         = "#000",
+  inverse_header_color            = usf_green,
+  inverse_background_color        = "#FFF",
+  title_slide_text_color = usf_green,
+  title_slide_background_color = "#FFF",
   table_row_even_background_color = apply_alpha(usf_gold, 0.25),
-  title_slide_background_image    = "images/usf-logo-gold.png",
+  title_slide_background_image    = "images/usf-v-green.jpg",
   title_slide_background_size     = "200px",
   title_slide_background_position = "90% 90%",
   extra_css = list(
     ".remark-notes-area .remark-bottom-area .remark-notes-current-area" = 
       list(height = "80%"),
+    ".remark-slide-number" = list(
+      bottom = "5px",
+      left = "45px",
+      right = "0px"),
+    ".no-slide-number > .remark-slide-number" = list(opacity = 0),
     ".remark-slide-content" = list(
-      "padding-top"    = "0px",
+      "background-image" = "url(images/usf-bg.jpg)",
+      "background-size" = "cover",
+      "padding-top"    = "75px",
       "padding-bottom" = "0px"),
+    ".remark-slide-content.title-slide" = list(
+      "background-image" = "url(images/usf-v-greengold.jpg)",
+      "background-size" = "200px",
+      "background-position" = "90% 90%",
+      "padding-top" = "0px"),
     ".title-slide > h3" = list(
       "text-align"  = "left",
       "font-size"   = "25px",
@@ -89,6 +103,7 @@ duo_accent(
       "border-radius" = "5px"),
     ".title-slide h3" = list("margin" = "10px"),
     ".inverse"        = list("font-weight" = "300"),
+    ".inverse-text" = list("color" = usf_green),
     ".pull-left p:first-child" = list("margin-top" = "0"),
     ".ngram-example code" = list(
       "font-size" = "1.5em",
@@ -207,9 +222,9 @@ We call this system **HomeSense**, and
 
 ---
 layout: false
-## Aging in Place
-
 .pull-left[
+### Aging in Place
+
 - Americans 65+ will **double** from 2014 to **98M** in 2060
 
 - Decrease in available traditional family caregivers
@@ -220,7 +235,7 @@ layout: false
 ]
 
 .pull-right[
-![](images/prb--aging-us-pop-bulletin--plots.png)
+<img src="images/prb--aging-us-pop-bulletin--plots.png" height="450px" style="margin-top: 40px">
 ]
 
 .footnote.small[Mather et al. (2015).<br>Aging in the United States. [pbr.org](http://www.pbr.org/)]
@@ -240,24 +255,25 @@ aging and manage health care for older adults.
 
 ---
 
-## The HomeSense System
+### The HomeSense System
 
 .pull-left[
+.mt-3[
 ![](images/sensors.png)
+]
 
 
-.huge.center[
+<!-- .bigger.center[
 <i class="fas fa-bolt" style="color: #FFC107"></i><br>
 <i class="fas fa-database" style="color: #28A745"></i>&nbsp;
 <i class="fas fa-table" style="color: #17A2B8"></i>&nbsp;
 <i class="fas fa-bell" style="color: #DC3545"></i>
-]
+] -->
 ]
 
 .pull-right[
-![](images/wilson-admin-01-front-page.png)
-
-![](images/homesense.jpg)
+<img src="images/wilson-admin-01-front-page.png" style="border: 2px #000 solid; border-radius: 2px">
+<img src="images/homesense.jpg" width="100%" style="border: 2px #FFF solid">
 ]
 
 ???
@@ -296,10 +312,23 @@ count:false
 .box-bottom.box-light.big[_This is a great non-intrusive system<br>that makes me at ease, makes my family and <br>I feel more safe and connected._]
 
 ---
-background-image: url(images/createhealthlogo.png)
-background-size: 66%
-background-position: 50% 5%
+background-image: url(images/create_health.png)
+background-size: 100%
+background-position: 50% 50%
 class: bottom, center
+
+???
+
+Who are We?
+
+Collaborative for Research & Ed in Aging, Tech & Health
+
+Community Partners, Funders, Academics, Students from a variety of disciplines – supported and connected by our university --  all focused on improving health and qol of life in late life
+
+---
+exclude: true
+
+<!-- My CREATE Health Slide -->
 
 .big[
 ![](images/createhealth-team.jpg)<br><br>
@@ -321,7 +350,7 @@ CH's research focuses on
 
 ---
 layout:false
-class: bottom, center, bg-full
+class: bottom, center, bg-full, no-pad, no-slide-number
 <!-- background-size: cover -->
 <!-- background-image: url(images/villages-flyover.png) -->
 
@@ -358,13 +387,13 @@ class: inverse middle
 
 <hr>
 
-.bigger.white[
+.bigger.inverse-text[
 Can we effectively use<br>
 passively-recorded<br>
 unlabelled sensor data<br>
 to characterize lifestyle<br>
 activity patterns and enable<br>
-detection of changes in routine?
+detection of changes in routine?<br>
 ]
 
 ???
@@ -475,8 +504,12 @@ and standard sensor layouts.
 background-image: url(images/simple-exp-covered.png)
 background-size: 96%
 background-position: 20% 50%
+exclude: true
+---
 
-## Floorplan and Sensor Layout
+### Floorplan and Sensor Layout
+
+<img src="images/simple-exp-covered.png" height="430px">
 
 ???
 
@@ -489,7 +522,7 @@ interaction with entrance and exit doors and routinely used objects
 
 ---
 layout: true
-## Activity Profiles
+### Activity Profiles
 
 ???
 
@@ -641,7 +674,7 @@ $D_{KL} (P \Vert Q) = \sum_{i} \left( p_i - q_i \right) \log \frac{p_i}{q_i}$
 
 ---
 layout: true
-## Evaluating Activity Profiles
+### Evaluating Activity Profiles
 ---
 
 *Do activity profiles capture the occupant's unique patterns?*
@@ -676,9 +709,9 @@ I repeatedly draw from training pool so that all folds
 have 12 trial total (12 iters, 1 rep -- 2 iters, 6 reps)
 
 ---
-layout:true
+layout: false
 
-## Results: Activity Profiles
+### Results: Activity Profiles
 
 ```{r results-ap-table}
 day_names <- colnames(results_ap$summary_overall_final)[-1]
@@ -703,11 +736,8 @@ results_ap$summary_overall_final %>%
 ```
 <br>
 
----
 
---
-
-```{r results-ap, fig.height=3.5}
+```{r results-ap, fig.height=2.5}
 results_ap$summary_overall %>% 
   filter(metric == "f1") %>%
   group_by(metric, model) %>%
@@ -789,7 +819,7 @@ g + annotate("rect", xmin = 39, xmax = 45, ymin=-Inf, ymax=Inf, fill = usf_gray,
 
 ---
 layout: true
-## Behavior Change Detection
+### Behavior Change Detection
 
 ```{r behavior-change-settings}
 OVERALL_N_DAYS <- c(7, 14, 28, 56)
@@ -888,7 +918,7 @@ cowplot::plot_grid(
 
 ---
 layout: false
-## Permutation-Based Comparison
+### Permutation-Based Comparison
 
 ```{r comparing-distances, fig.height=7, include=FALSE}
 left_date = "2017-10-01"
@@ -945,8 +975,8 @@ m28_left <- filter_and_jitter(houseXXX$moving_28, left_date)
 m28_right <- filter_and_jitter(houseXXX$moving_28, right_date)
 ```
 
-.full-plot[
-![](images/permutations4.gif)
+.center[
+<img src="images/permutations4.gif" height="450px">
 ]
 
 ???
@@ -987,9 +1017,9 @@ for (h in c("House004", "House005", "House008", "House013")) {
 }
 ```
 
-## Behavior Change Example
+### Results: Behavior Change
 
-```{r behavior-change-house013, warning = FALSE, fig.height=7}
+```{r behavior-change-house013, warning = FALSE, fig.height=6}
 plot_summarized_with_highlights <- function(dfm, 
                                             adjust_days = 14, window_days = max(adjust_days, 7), 
                                             just_max_data = FALSE, mask_date = FALSE) {
@@ -1058,19 +1088,19 @@ cowplot::plot_grid(
 
 ---
 
-## Looking Forward
-
 .pull-left[
+### Looking Forward
+
 - Early alerting of caregivers or admin through dashboard or notifications
 
 - Couple behavior change with comparison to **baseline**
 
-- Use permutations to **explain differences**
+- Use permutations to<br>**explain differences**
 ]
 
 .pull-right.center[
-![](images/chdash-05-overview-by-hour.png)
-<img src="images/notification-email.png" height="250px">
+<img src="images/chdash-05-overview-by-hour.png" height="225px" style="margin-top: 25px; border: 2px #000 solid; border-radius: 2px;">
+<img src="images/notification-email.png" height="225px" style="margin-top: 25px">
 ]
 
 .footnote[
@@ -1096,13 +1126,22 @@ Tulio 2016. arXiv:1602.04938
 ]
 
 ---
-class: title-slide, center, middle, white
+background-image: url(images/usf-closing.jpg)
+class: middle right white no-slide-number
+
+.bigger[Thank You<br>Questions?]
+
+<div style="font-family: Merriweather; font-size: 1.25em; font-weight: 300; padding-top: 75px">Garrick Aden-Buie<br>garrick@adenbuie.com</div>
+
+---
+class: title-slide center middle inverse-text 
+exclude: true
 
 # Thank You
 
-## Questions?<br><br><br><code class="white">usf.edu/engineering/create-health</code>
+## Questions?<br>usf.edu/engineering/create-health
 
-### Garrick Aden-Buie <br><code class="white">garrick@adenbuie.com</code>
+### Garrick Aden-Buie <br>garrick@adenbuie.com
 ### University of South Florida
 
 
