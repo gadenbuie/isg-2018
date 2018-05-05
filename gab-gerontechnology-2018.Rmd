@@ -249,14 +249,14 @@ layout: false
 
 - 2/3 manage multiple chronic conditions
 
-- Strong preference to<br>**age in place**
+- Strong preference to<br>**age in place**<sup>`r add_ref("Mather2015")`</sup>
 ]
 
 .pull-right[
 <img src="images/prb--aging-us-pop-bulletin--plots.png" height="450px" style="margin-top: 40px">
 ]
 
-.footnote.small[Mather et al. (2015).<br>Aging in the United States. [pbr.org](http://www.pbr.org/)]
+.footnote.small[`r refs["Mather2015"]`: Mather et al. (2015).<br>Aging in the United States. [pbr.org](http://www.pbr.org/)]
 
 ???
 
