@@ -1,8 +1,8 @@
 ---
 title: "Unsupervised Behavior Change Detection"
-subtitle: "Using Passive Sensor Systems<br>in the Homes of Older Adults"  
-author: "Garrick Aden-Buie<br>C. VandeWeerd, A. Yalcin"
-date: 'May 7, 2018<br><i>ISG Gerontechnology 2018</i>'
+subtitle: "Using Passive Sensor Systems in the Homes of Older Adults"  
+author: "Garrick Aden-Buie, C. VandeWeerd, A. Yalcin"
+# date: 'May 7, 2018<br><i>ISG Gerontechnology 2018</i>'
 output:
   xaringan::moon_reader:
     lib_dir: libs
@@ -61,15 +61,15 @@ duo_accent(
   text_font_weight                = "400",
   text_font_size                  = "20px",
   code_inline_color               = "#222",
-  text_slide_number_color         = "#000",
+  text_slide_number_color         = "#555",
   inverse_header_color            = usf_green,
   inverse_background_color        = "#FFF",
-  title_slide_text_color = usf_green,
-  title_slide_background_color = "#FFF",
+  title_slide_text_color          = "#FFF",
+  title_slide_background_color    = "#FFF",
   table_row_even_background_color = apply_alpha(usf_gold, 0.25),
-  title_slide_background_image    = "images/usf-v-green.jpg",
-  title_slide_background_size     = "200px",
-  title_slide_background_position = "90% 90%",
+  # title_slide_background_image    = "images/usf-bg-title.jpg",
+  # title_slide_background_size     = "cover",
+  # title_slide_background_position = "90% 90%",
   extra_css = list(
     ".remark-notes-area .remark-bottom-area .remark-notes-current-area" = 
       list(height = "80%"),
@@ -84,18 +84,27 @@ duo_accent(
       "padding-top"    = "75px",
       "padding-bottom" = "0px"),
     ".remark-slide-content.title-slide" = list(
-      "background-image" = "url(images/usf-v-greengold.jpg)",
-      "background-size" = "200px",
-      "background-position" = "90% 90%",
-      "padding-top" = "0px"),
+      "background-image" = "url(images/usf-bg-title.jpg)",
+      "background-size" = "cover"
+    #   "background-position" = "90% 90%",
+    #   "padding-top" = "0px"
+    ),
+   ".title-slide h1" = list(
+     "text-align" = "left",
+     "position" = "absolute",
+     bottom = "80px",
+     left = "25px",
+     "font-size" = "30px") ,
+    ".title-slide h2" = list(
+      "text-align" = "left",
+      "font-size"     = "23px",
+      "font-weight"   = "300",
+      position = "absolute", bottom = "50px", left = "25px"),
     ".title-slide > h3" = list(
       "text-align"  = "left",
-      "font-size"   = "25px",
-      "font-weight" = "300"), 
-    ".title-slide h2" = list(
-      "font-size"     = "30px",
-      "font-weight"   = "300",
-      "margin-bottom" = "5.5em"),
+      "font-size"   = "20px",
+      "font-weight" = "300",
+      position = "absolute", bottom = "20px", left = "15px"), 
     ".remark-slide-content hr" = list(
       height = "2px",
       color = usf_gold,
@@ -126,6 +135,15 @@ duo_accent(
       "padding-right" = "13px")
   )
 )
+```
+
+```{r refs}
+refs <- c()
+add_ref <- function(ref) {
+  n_ref <- length(refs) + 1
+  refs <<- c(refs, setNames(n_ref, ref))
+  n_ref
+}
 ```
 class: middle
 exclude: true
@@ -164,7 +182,7 @@ exclude: true
 1. Behavior Change Detection
 
 ---
-class: bottom center
+class: bottom center no-slide-number
 background-image: url(images/participant-seated.jpg)
 background-size: cover
 layout: true
@@ -204,7 +222,7 @@ count: false
 layout: false
 background-image: url(images/participant-pointing-sensor.jpg)
 background-size: cover
-class: right middle
+class: right middle no-slide-number
 
 .box-right.box-light[
 # HomeSense
@@ -291,7 +309,7 @@ The main compenents of the system are
   via web interface
 
 ---
-class: bottom center
+class: bottom center no-slide-number
 background-image: url(images/participant-smiling-computer.jpg)
 background-size: cover
 
@@ -305,7 +323,7 @@ who described their experience with HomeSense, saying...
 
 
 ---
-class: bottom center bg-full
+class: bottom center bg-full no-slide-number
 background-image: url(images/participant-computer-pointing.jpg)
 count:false
 
@@ -410,9 +428,9 @@ We will address this question from two angles:
 
 ### Lifestyle Reassurance
 
-- Alleviate burden of chronic illness on older adults and their informal caregivers through supportive technology
+- Alleviate burden of chronic illness with supportive technology
 
-- Provides safety and security by alerting adults and their caregivers to changes in routine
+- Provide safety and security around changes in health and routine
 
 ???
 
@@ -446,7 +464,7 @@ explicit, high-level activity labels
 and that can effectively make use of real-world, natural SH act. data
 
 ---
-## Outline
+### Outline
 
 .big[
 1. Data Collection and Processing
@@ -830,12 +848,15 @@ used_dictionary <- ap:::dictionary_global
 SINGLE_PAUSE <- TRUE
 ```
 
-1. Compare occupant's recent activity to previous behavior
+- Compare occupant's recent activity to previous behavior
 
-1. Permutation-based methods for change detection
-    - What is normal variation vs. anomaly/change?
+- Permutation-based methods for change detection<sup>`r add_ref("Sprint2016")`</sup>
 
-1. Alert caregivers or system operators to shifts in behavior patterns
+- Alert caregivers or system operators to shifts in behavior patterns
+
+.footnote[
+`r refs["Sprint2016"]`: Sprint, Cook & Schmitter-Edgecombe, 2016
+]
 
 ???
 
@@ -850,13 +871,13 @@ SINGLE_PAUSE <- TRUE
 
 - Given that KL-dist is a scale-less distance metric,<br>
   need to establish bounds guidelines for expected similarity
+  *What is normal variation vs. anomaly/change?*
 
 - Overall, our goal is to bring abnormalities to the attention of caregiver<br>
   human review and intervention is expected<br>
   and system issues are equally requiring of attention
 
 ---
-
 
 ```{r permutation-setup}
 plot_day_examples <- function(ws, shuffle = FALSE) {
@@ -886,7 +907,7 @@ plot_day_examples <- function(ws, shuffle = FALSE) {
     # scale_fill_manual(values = c(
     #   "#7FB1C1", # lighten_color(usf_accent[7], 0.5)
     #   usf_accent[c(5, 7, 3)])) +
-    scale_fill_manual(values = usf_accent[c(4, 1, 7, 3)]) + 
+    scale_fill_manual(values = c("#fdbf6f", "#a6cee3", "#ff7f00", "#1f78b4")) + 
     theme_minimal(23) + 
     theme(
       plot.margin = margin(0, 1, 0, 0),
@@ -1095,7 +1116,7 @@ cowplot::plot_grid(
 
 - Couple behavior change with comparison to **baseline**
 
-- Use permutations to<br>**explain differences**
+- Use permutations to<br>**explain differences**<sup>`r add_ref("Tulio2016")`</sup>
 ]
 
 .pull-right.center[
@@ -1104,7 +1125,7 @@ cowplot::plot_grid(
 ]
 
 .footnote[
-Tulio 2016. arXiv:1602.04938
+`r refs["Tulio2016"]`: Tulio 2016. arXiv:1602.04938
 ]
 
 ???

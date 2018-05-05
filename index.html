@@ -3,7 +3,7 @@
   <head>
     <title>Unsupervised Behavior Change Detection</title>
     <meta charset="utf-8">
-    <meta name="author" content="Garrick Aden-Buie C. VandeWeerd, A. Yalcin" />
+    <meta name="author" content="Garrick Aden-Buie, C. VandeWeerd, A. Yalcin" />
     <link rel="stylesheet" href="css/fontawesome-all.min.css" type="text/css" />
     <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
     <link rel="stylesheet" href="css/boxes.css" type="text/css" />
@@ -15,11 +15,12 @@
 class: center, middle, inverse, title-slide
 
 # Unsupervised Behavior Change Detection
-## Using Passive Sensor Systems<br>in the Homes of Older Adults
-### Garrick Aden-Buie<br>C. VandeWeerd, A. Yalcin
-### May 7, 2018<br><i>ISG Gerontechnology 2018</i>
+## Using Passive Sensor Systems in the Homes of Older Adults
+### Garrick Aden-Buie, C. VandeWeerd, A. Yalcin
 
 ---
+
+
 
 
 
@@ -64,7 +65,7 @@ exclude: true
 1. Behavior Change Detection
 
 ---
-class: bottom center
+class: bottom center no-slide-number
 background-image: url(images/participant-seated.jpg)
 background-size: cover
 layout: true
@@ -104,7 +105,7 @@ count: false
 layout: false
 background-image: url(images/participant-pointing-sensor.jpg)
 background-size: cover
-class: right middle
+class: right middle no-slide-number
 
 .box-right.box-light[
 # HomeSense
@@ -191,7 +192,7 @@ The main compenents of the system are
   via web interface
 
 ---
-class: bottom center
+class: bottom center no-slide-number
 background-image: url(images/participant-smiling-computer.jpg)
 background-size: cover
 
@@ -205,7 +206,7 @@ who described their experience with HomeSense, saying...
 
 
 ---
-class: bottom center bg-full
+class: bottom center bg-full no-slide-number
 background-image: url(images/participant-computer-pointing.jpg)
 count:false
 
@@ -310,9 +311,9 @@ We will address this question from two angles:
 
 ### Lifestyle Reassurance
 
-- Alleviate burden of chronic illness on older adults and their informal caregivers through supportive technology
+- Alleviate burden of chronic illness with supportive technology
 
-- Provides safety and security by alerting adults and their caregivers to changes in routine
+- Provide safety and security around changes in health and routine
 
 ???
 
@@ -346,7 +347,7 @@ explicit, high-level activity labels
 and that can effectively make use of real-world, natural SH act. data
 
 ---
-## Outline
+### Outline
 
 .big[
 1. Data Collection and Processing
@@ -872,12 +873,15 @@ layout: true
 
 
 
-1. Compare occupant's recent activity to previous behavior
+- Compare occupant's recent activity to previous behavior
 
-1. Permutation-based methods for change detection
-    - What is normal variation vs. anomaly/change?
+- Permutation-based methods for change detection&lt;sup&gt;1&lt;/sup&gt;
 
-1. Alert caregivers or system operators to shifts in behavior patterns
+- Alert caregivers or system operators to shifts in behavior patterns
+
+.footnote[
+1: Sprint, Cook &amp; Schmitter-Edgecombe, 2016
+]
 
 ???
 
@@ -892,13 +896,13 @@ layout: true
 
 - Given that KL-dist is a scale-less distance metric,&lt;br&gt;
   need to establish bounds guidelines for expected similarity
+  *What is normal variation vs. anomaly/change?*
 
 - Overall, our goal is to bring abnormalities to the attention of caregiver&lt;br&gt;
   human review and intervention is expected&lt;br&gt;
   and system issues are equally requiring of attention
 
 ---
-
 
 
 
@@ -961,7 +965,7 @@ layout: false
 
 - Couple behavior change with comparison to **baseline**
 
-- Use permutations to&lt;br&gt;**explain differences**
+- Use permutations to&lt;br&gt;**explain differences**&lt;sup&gt;2&lt;/sup&gt;
 ]
 
 .pull-right.center[
@@ -970,7 +974,7 @@ layout: false
 ]
 
 .footnote[
-Tulio 2016. arXiv:1602.04938
+2: Tulio 2016. arXiv:1602.04938
 ]
 
 ???
