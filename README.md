@@ -8,5 +8,5 @@ Works best in Chome
 
 Can reference slide by copying URL (or slide number)
 
-[Abstract available here](abstract.md)
+[Abstract available here](https://gadenbuie.github.io/isg-2018/abstract)
 

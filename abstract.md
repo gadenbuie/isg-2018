@@ -13,11 +13,11 @@ challenges driven by growth within the elderly segments of our population. The
 majority of adults over 65 are healthy but managing one or more chronic
 illnesses, and older adults and their informal caregivers---such as family
 members and friends---require supportive technologies that assist in monitoring
-and managing these conditions^1^ as they strive to maintain independence at
+and managing these conditions<sup>1</sup> as they strive to maintain independence at
 home. An important goal of lifestyle reassurance monitoring is to alert older
 adults and their caregivers to changes in behavior or routine. In contrast with
 traditional activity recognition algorithms that require labelled activity data
-that is both difficult and expensive to collect^2^, we present a method for
+that is both difficult and expensive to collect<sup>2</sup>, we present a method for
 unsupervised behavior change detection that does not require explicit,
 higher-level activity labels and is effective when applied to real-world,
 natural, smart home activity data.
@@ -33,8 +33,8 @@ of presence throughout the home, and magnetic contact sensors for detection of
 interaction with entrance and exit doors and routinely used objects. All sensors
 are wireless, use the Z-Wave protocol, and are readily available commercially.
 The basis of the behavior change algorithm is the use of a bag of event sequence
-n-grams representation^3^ to summarize daily activity patterns in an activity
-profile and a permutation-based change detection algorithm^4^ to compare
+n-grams representation<sup>3</sup> to summarize daily activity patterns in an activity
+profile and a permutation-based change detection algorithm<sup>4</sup> to compare
 activity profiles of multiple days (e.g. a baseline period of activity) and
 individual or grouped activity profiles.
 
