@@ -113,6 +113,9 @@ duo_accent(
     ".title-slide h3" = list("margin" = "10px"),
     ".inverse"        = list("font-weight" = "300"),
     ".inverse-text" = list("color" = usf_green),
+    ".footnote" = list(
+      color = "#466069",
+      bottom = "2em"),
     ".pull-left p:first-child" = list("margin-top" = "0"),
     ".ngram-example code" = list(
       "font-size" = "1.5em",
@@ -142,8 +145,10 @@ refs <- c()
 add_ref <- function(ref) {
   n_ref <- length(refs) + 1
   refs <<- c(refs, setNames(n_ref, ref))
-  n_ref
+  paste0("<sup>", n_ref, "</sup>")
 }
+library(RefManageR)
+bib <- ReadBib("refs-isg2018.bib")
 ```
 class: middle
 exclude: true
@@ -243,20 +248,23 @@ layout: false
 .pull-left[
 ### Aging in Place
 
-- Americans 65+ will **double** from 2014 to **98M** in 2060
+- Americans 65+ will **double** from 2014 to **98M** in 2060`r add_ref("Mather2015")`
 
-- Decrease in available traditional family caregivers
+- Decrease in available traditional family caregivers`r add_ref("Demiris2008a")`
 
 - 2/3 manage multiple chronic conditions
 
-- Strong preference to<br>**age in place**<sup>`r add_ref("Mather2015")`</sup>
+- Strong preference to<br>**age in place**
 ]
 
 .pull-right[
 <img src="images/prb--aging-us-pop-bulletin--plots.png" height="450px" style="margin-top: 40px">
 ]
 
-.footnote.small[`r refs["Mather2015"]`: Mather et al. (2015).<br>Aging in the United States. [pbr.org](http://www.pbr.org/)]
+.footnote.small[
+`r refs["Mather2015"]`: `r Citet(bib, "Mather2015")` <br>
+`r refs["Demiris2008a"]`: `r Citet(bib, "Demiris2008a")`
+]
 
 ???
 
@@ -428,7 +436,7 @@ We will address this question from two angles:
 
 ### Lifestyle Reassurance
 
-- Alleviate burden of chronic illness with supportive technology
+- Alleviate burden of chronic illness with supportive technology<sup>`r refs["Demiris2008a"]`</sup>
 
 - Provide safety and security around changes in health and routine
 
@@ -447,11 +455,16 @@ in behavior and routine and alerting OA/CGs when these occur
 
 ### Unsupervised Behavior Change Detection
 
-- Labelled activity data is difficult and expensive to collect
+- Labelled activity data is difficult and expensive to collect`r add_ref("Szewcyzk2009-Annotatingsmartenvironment")`
 
 - Requires solutions without explicit, higher-level activity labels
 
 - Reflects real-world, natural, smart home activity data
+
+.footnote[
+`r refs["Demiris2008a"]`: `r Citet(bib, "Demiris2008a")`; 
+`r refs["Szewcyzk2009-Annotatingsmartenvironment"]`: `r Citet(bib, "Szewcyzk2009-Annotatingsmartenvironment")`
+]
 
 ???
 <hr>
@@ -562,7 +575,11 @@ Represent sensor events as daily *event sequences*
 
 1. Insert *pause event* when no activity in 15 minutes
 
-1. Summarize event sequence as **bag-of-event _n_-grams**
+1. Summarize event sequence as **bag-of-event _n_-grams**`r add_ref("Hamid2005")`
+
+.footnote[
+`r refs["Hamid2005"]`: `r Citet(bib, "Hamid2005")`
+]
 
 ---
 
@@ -850,12 +867,12 @@ SINGLE_PAUSE <- TRUE
 
 - Compare occupant's recent activity to previous behavior
 
-- Permutation-based methods for change detection<sup>`r add_ref("Sprint2016")`</sup>
+- Permutation-based methods for change detection<sup>`r add_ref("Sprint2016-swPCAR")`</sup>
 
 - Alert caregivers or system operators to shifts in behavior patterns
 
 .footnote[
-`r refs["Sprint2016"]`: Sprint, Cook & Schmitter-Edgecombe, 2016
+`r refs["Sprint2016-swPCAR"]`: `r Citet(bib, "Sprint2016-swPCAR")`
 ]
 
 ???
@@ -1123,7 +1140,7 @@ cowplot::plot_grid(
 
 - Couple behavior change with comparison to **baseline**
 
-- Use permutations to<br>**explain differences**<sup>`r add_ref("Tulio2016")`</sup>
+- Use permutations to<br>**explain differences**`r add_ref("Ribeiro2016-WhyShouldTrustYou")`
 ]
 
 .pull-right.center[
@@ -1132,7 +1149,7 @@ cowplot::plot_grid(
 ]
 
 .footnote[
-`r refs["Tulio2016"]`: Tulio 2016. arXiv:1602.04938
+`r refs["Ribeiro2016-WhyShouldTrustYou"]`: `r Citet(bib, "Ribeiro2016-WhyShouldTrustYou")`
 ]
 
 ???
@@ -1172,6 +1189,24 @@ exclude: true
 ### Garrick Aden-Buie <br>garrick@adenbuie.com
 ### University of South Florida
 
+---
+
+#### References
+
+```{r bibliography}
+citations <- list(
+  "Mather2015" = "Mather, M., Jacobssen, L., & Pollard, K. M. (2015). *Aging in the United States*.",
+  "Demiris2008a" = 'Demiris, G., & Hensel, B. K. (2008). Technologies for an aging society: A systematic review of "smart home" applications. *Yearbook of Medical Informatics*, 33–40. pubmed:[18660873](http://www.ncbi.nlm.nih.gov/pubmed/18660873)',
+"Szewcyzk2009-Annotatingsmartenvironment" = 'Szewcyzk, S., Dwan, K., Minor, B., Swedlove, B., & Cook, D. (2009). Annotating smart environment sensor data for activity learning. *Technology and Health Care*, *17*(3), 161–169. doi:[10.3233/THC-2009-0546](https://doi.org/10.3233/THC-2009-0546)',
+"Hamid2005" = 'Hamid, R., Johnson, A., Batta, S., Bobick, A., Isbell, C., & Coleman, G. (2005). Detection and explanation of anomalous activities: Representing activities as bags of event n-grams. *Proceedings - 2005 IEEE Computer Society Conference on Computer Vision and Pattern Recognition, CVPR 2005*, *I*, 1031–1038. doi:[10.1109/CVPR.2005.127](https://doi.org/10.1109/CVPR.2005.127)',
+"Sprint2016-swPCAR" = 'Sprint, G., Cook, D. J., & Schmitter-Edgecombe, M. (2016). Unsupervised detection and analysis of changes in everyday physical activity data. *Journal of Biomedical Informatics*, doi:[10.1016/j.jbi.2016.07.020](https://doi.org/10.1016/j.jbi.2016.07.020)',
+"Ribeiro2016-WhyShouldTrustYou" = 'Ribeiro, M. T., Singh, S., & Guestrin, C. (2016). "Why Should I Trust You?": Explaining the Predictions of Any Classifier. arXiv:[1602.04938](http://arxiv.org/abs/1602.04938)'
+)
+
+for (ref in names(refs)) {
+  cat(refs[ref], ". ", citations[[ref]], "\n", sep = "")
+}
+```
 
 ---
 exclude: true

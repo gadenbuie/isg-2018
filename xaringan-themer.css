@@ -211,6 +211,10 @@ table.dataTable.hover tbody tr:hover, table.dataTable.display tbody tr:hover {
 .inverse-text {
   color: #006747;
 }
+.footnote {
+  color: #466069;
+  bottom: 2em;
+}
 .pull-left p:first-child {
   margin-top: 0;
 }
