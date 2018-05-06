@@ -61,21 +61,41 @@ single_plot <- function(i, ...) {
 # saveGIF(for (i in 0:1000) print(single_plot(i)),
 #         movie.name = "permutations.gif")
 
-
-library(parallel)
-tmpdir <- tempfile("", ".")
-dir.create(tmpdir)
-# mclapply(seq(0, 1000, 10), function(i) {
-#   gg <- single_plot(i)
-#   ggsave(sprintf("%s/permutation_%04d.png", tmpdir, i), gg, height = 7.5/2, width = 10/2)
-# }, mc.cores = 4)
-ix <- seq(0, 1000, 5)
-p <- progress_estimated(length(ix))
-cat("Writing to:", tmpdir, "\n")
-for(i in ix) {
-  gg <- single_plot(i)
-  ggsave(sprintf("%s/permutation_%04d.png", tmpdir, i), gg, height = 7.5/2, width = 10/2)
-  p$tick()$print()
+generate_plot_iterations <- function() {
+  library(parallel)
+  tmpdir <- tempfile("", ".")
+  dir.create(tmpdir)
+  # mclapply(seq(0, 1000, 10), function(i) {
+  #   gg <- single_plot(i)
+  #   ggsave(sprintf("%s/permutation_%04d.png", tmpdir, i), gg, height = 7.5/2, width = 10/2)
+  # }, mc.cores = 4)
+  ix <- seq(0, 1000, 5)
+  p <- progress_estimated(length(ix))
+  cat("Writing to:", tmpdir, "\n")
+  for(i in ix) {
+    gg <- single_plot(i)
+    ggsave(sprintf("%s/permutation_%04d.png", tmpdir, i), gg, height = 7.5/2, width = 10/2)
+    p$tick()$print()
+  }
+  p$stop()$print()
+  cat("\nSaved to:", tmpdir)
 }
-p$stop()$print()
-cat("\nSaved to:", tmpdir)
+
+# With boxplot
+single_with_boxplot <- function(...) {
+  cowplot::plot_grid(
+    plot_iters(m28_left, 1000, "Normal", ...) +
+      geom_boxplot(
+        data = mutate(filter(m28_left, iter > 0), end = min(end) - 0.05),
+        aes(group = 1), coef = 3,
+        fill = usf_green, color = usf_green,
+        width = 0.025, size = 2),
+    plot_iters(m28_right, 1000, "Abnormal", ...) +
+      geom_boxplot(
+        data = mutate(filter(m28_right, iter > 0), end = max(end) + 0.05),
+        aes(group = 1), coef = 3,
+        fill = '#BB1847', color = '#BB1847', width = 0.025, size = 2),
+    ncol = 2,
+    align = 'h'
+  )
+}

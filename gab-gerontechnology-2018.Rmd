@@ -938,8 +938,9 @@ cowplot::plot_grid(
 ```
 
 ---
-layout: false
+layout: true
 ### Permutation-Based Comparison
+---
 
 ```{r comparing-distances, fig.height=7, include=FALSE}
 left_date = "2017-10-01"
@@ -1003,6 +1004,12 @@ m28_right <- filter_and_jitter(houseXXX$moving_28, right_date)
 ???
 
 Each shuffling of 
+
+---
+
+.center[
+<img src="images/permutations4-boxplot.png" height="450px">
+]
 
 ---
 layout: false
