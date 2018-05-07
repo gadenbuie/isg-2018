@@ -89,6 +89,10 @@ duo_accent(
     #   "background-position" = "90% 90%",
     #   "padding-top" = "0px"
     ),
+   ".remark-slide-content h4" = list(
+     color = usf_green,
+     "font-size" = "1.1em",
+     "margin-bottom" = "0"),
    ".title-slide h1" = list(
      "text-align" = "left",
      "position" = "absolute",
@@ -140,7 +144,7 @@ duo_accent(
 )
 ```
 
-```{r refs}
+```{r refs, cache = FALSE}
 refs <- c()
 add_ref <- function(ref) {
   n_ref <- length(refs) + 1
@@ -186,6 +190,85 @@ exclude: true
     - Occupant identification task: experiment and results
 1. Behavior Change Detection
 
+
+---
+background-image: url(images/create_health.png)
+background-size: 100%
+background-position: 50% 50%
+name: create-health
+class: bottom, center
+
+???
+
+Who are We?
+
+Collaborative for Research & Education<br>
+in Aging, Tech & Health
+
+- Community Partners, Funders, Academics, Students from a variety of disciplines
+
+- supported and connected by USF
+
+-  with a focus on improving health and qol of life in late life
+
+---
+exclude: true
+
+<!-- My CREATE Health Slide -->
+
+.big[
+![](images/createhealth-team.jpg)<br><br>
+`usf.edu/engineering/create-health`<br><br>
+]
+
+???
+
+CREATE Health 
+- is an **interdisciplinary team** 
+- of ENG & PUB HEALTH students & researchers
+- dedicated to improving the health and quality of life of aging populations
+- through the use of technology
+
+CH's research focuses on 
+- alleviating the burdens, financial and physical, of chronic disease treatment 
+- by examining how technology can improve healthcare delivery and support, 
+- in particular at the intersection of community and organizational health system components.
+
+---
+layout: false
+name: villages
+class: bottom, center, bg-full, no-pad, no-slide-number
+<!-- background-size: cover -->
+<!-- background-image: url(images/villages-flyover.png) -->
+
+<video loop muted autoplay poster="images/villages-flyover.png" class="bg-video">
+    <source src="images/villages-flyover2.mp4" type="video/mp4">
+</video>
+
+.box-center-bottom.box-light[
+<img src="images/thevillages-logo.svg" width="80%">
+
+<div style="text-align: left; padding-left: 60px">
+<ul>
+<li>The largest retirement community in US</li>
+<li>75 miles north of Tampa, FL</li>
+<li>115,000 residents in 50,000 homes</li>
+<li>Average age: 62 (M) and 60 (F)</li>
+<ul>
+</div>
+]
+<!-- <div style="padding: 15px">&nbsp;</div> -->
+
+???
+A majory community partner in CREATE Health's work is The Villages...
+
+.notes-list[
+- 32 sq miles
+- 3 town squares
+- 63 rec centers
+- legend has it a Villager can play 18 holes of gold for 30 straight days without repeating
+]
+
 ---
 class: bottom center no-slide-number
 background-image: url(images/participant-seated.jpg)
@@ -202,26 +285,73 @@ count: false
   in her home in The Villages.
 - Overall, she's in great health. 
 - As a typical retiree living in the Sunshine State, she leads a highly active 
-  life involving an assortment of clubs and groups, dance classes at the 
-  recreation center, and frequent lunches and dinners in the town square with friends.
-- She lives alone, but she talks to her daughter regularly, even though she lives
-  on the other side of the country.
+  life involving 
+      - an assortment of clubs and groups, 
+      - dance classes at the recreation center, and 
+      - frequent lunches and dinners in the town square with friends.
+- She lives alone, but she talks to her daughter regularly, even though they live
+  on opposite sides of the US.
 
 ---
 count: false
 
 ???
 
-- About a year or so ago, though, Dorothy's recurrent hip pain worsened and she and 
-  her doctor decided for hip replacement surgery.
-- She arrived at the hospital the day of the procedure only to find out that due 
-  to an insurance issue meant, she would have to wait another three months.
-- In the mean time, her mobility declined, she spent more time in bed, and she 
-  couldn't make it many of the activities she loved.
+- About a year or so ago, though, Dorothy's **recurrent hip pain** worsened and she and 
+  her doctor decided for **hip replacement surgery**.
+- She arrived at the hospital on the day of the procedure only to find out that due 
+  to an insurance issue, she would have to wait another three months.
+- In the mean time, 
+    - her mobility declined, 
+    - she spent more time in bed, and 
+    - she couldn't make it to many of the activities she loved.
 - Her daughter had planned to visit during this time, but due to a family 
   emergency she had to cancel her plans.
 - In the end surgery went well, Dorothy recovered quickly and a few months later
   she was back to living the life she enjoyed.
+
+
+---
+layout: false
+.pull-left[
+### Aging in Place
+
+- Americans 65+ will **double** from 2014 to **98M** in 2060`r add_ref("Mather2015")`
+
+- 80% manage one or more<br>chronic conditions`r add_ref("Pearson2012")`
+
+- Decrease in available traditional family caregivers`r add_ref("Demiris2008a")`
+
+- Strong preference to<br>**age in place**
+]
+
+.pull-right[
+<img src="images/prb--aging-us-pop-bulletin--plots.png" height="450px" style="margin-top: 40px">
+]
+
+.footnote.small[
+`r refs["Mather2015"]`: `r Citet(bib, "Mather2015")` <br>
+`r refs["Pearson2012"]`: `r Citet(bib, "Pearson2012")` <br>
+`r refs["Demiris2008a"]`: `r Citet(bib, "Demiris2008a")`
+]
+
+???
+
+.notes-list[
+I'm sharing Dorothy's story for __2 reasons__: The first because... __her experience highlights the challenges__ we face as a society in how we approach aging and manage health care for older adults.
+
+1. She is part of a __growing population of seniors__, one that is expected to double to 98M over the next 40 years
+
+2. __Life expectancy has increased by 3 mon/year since 1840<sup>*</sup>__ 
+  - and while 75% of seniors report being in __good to excellent health__, 
+  - __a majority are managing chronic health conditions__.
+
+3. More older adults are divorced or live alone than ever before, which in conjunction with demogrph. changes leads to decreased availability of traditional family caregivers
+
+4. Additionally, there is a strong preference to age in place, __like Dorothy__ -- remain in their own homes and communities, for as long as possible (75% want to stay, vast majority 96% live in community)
+]
+
+<!-- .footnote.small[<sup>*</sup>Wouters 2017] -->
 
 ---
 layout: false
@@ -235,49 +365,16 @@ class: right middle no-slide-number
 
 ???
 
-Fortunately, throughout this story, Dorothy's daughter was able to stay in 
-touch with her mother's daily activities thanks to the home sensor system
-we installed in Dorothy's home.
+The second reason I've shared Dorothy's story is because, 
+- as a participant in our study, 
+- she had a home sensor system installed in her home 
+- and that system allowed Dorothy's daugher to stay in touch with her mother's daily activities while they waited 4 hip replace
 
-We call this system **HomeSense**, and
-- the goal the system and our study is to better monitor the daily activities of older adults
-- and with a particular focus on activities that signal health changes or influence health outcomes
+The goal of the system that we call __HomeSense__ 
+- is to support seniors who want to age in place safely and independently
+- by monitoring daily activities
+- in particular focusing on the activities that signal or influence health outcomes
 
----
-layout: false
-.pull-left[
-### Aging in Place
-
-- Americans 65+ will **double** from 2014 to **98M** in 2060`r add_ref("Mather2015")`
-
-- Decrease in available traditional family caregivers`r add_ref("Demiris2008a")`
-
-- 2/3 manage multiple chronic conditions
-
-- Strong preference to<br>**age in place**
-]
-
-.pull-right[
-<img src="images/prb--aging-us-pop-bulletin--plots.png" height="450px" style="margin-top: 40px">
-]
-
-.footnote.small[
-`r refs["Mather2015"]`: `r Citet(bib, "Mather2015")` <br>
-`r refs["Demiris2008a"]`: `r Citet(bib, "Demiris2008a")`
-]
-
-???
-
-Dorothy's story highlights the challenges we face as a society in how we approach
-aging and manage health care for older adults.
-
-1. Part of a growing population of older adults that is expected to double to 98M by 2060 (from 2014 population)
-
-2. More older adults are divorced, live alone than ever before, meaning weaker ties to traditional family caregivers, either by distance or relationship
-
-3. Simultaneously, managing chronic illness rather than acute episodes
-
-4. But overall strong preference to age in place, remain in their own homes and communities, for as long as possible **TODO: stat and reference from proposal**
 
 ---
 
@@ -310,11 +407,12 @@ The main compenents of the system are
     - **magnetic contact sensors**: doors, cabinets, fridge access
     - **other**: electricity, temp, luminance, etc.
 - the data is collected through raspberry pi in home<br>
-  collected, warehoused and processed on our servers
-- Internally managed with a number of dashboards and<br>
-  custom inventory management systems
-- Summarized data presented to users and family/friends<br>
-  via web interface
+  ...then collected, warehoused and processed on our servers
+- A suite of tools for internal use such as 
+    - a custom inventory management system and 
+    - a number of dashboards
+- A web interface for users and family/friends<br>
+  can review summarized and detailed activity data
 
 ---
 class: bottom center no-slide-number
@@ -325,10 +423,7 @@ background-size: cover
 
 ???
 
-The greatest .big[value proposition] of this technology <br>
-was summarized perfectly by one of our participants,<br>
-who described their experience with HomeSense, saying...
-
+When asked about her experience with HomeSense, Dorothy said...
 
 ---
 class: bottom center bg-full no-slide-number
@@ -337,100 +432,9 @@ count:false
 
 .box-bottom.box-light.big[_This is a great non-intrusive system<br>that makes me at ease, makes my family and <br>I feel more safe and connected._]
 
----
-background-image: url(images/create_health.png)
-background-size: 100%
-background-position: 50% 50%
-class: bottom, center
-
 ???
 
-Who are We?
-
-Collaborative for Research & Ed in Aging, Tech & Health
-
-Community Partners, Funders, Academics, Students from a variety of disciplines – supported and connected by our university --  all focused on improving health and qol of life in late life
-
----
-exclude: true
-
-<!-- My CREATE Health Slide -->
-
-.big[
-![](images/createhealth-team.jpg)<br><br>
-`usf.edu/engineering/create-health`<br><br>
-]
-
-???
-
-CREATE Health 
-- is an **interdisciplinary team** 
-- of ENG & PUB HEALTH students & researchers
-- dedicated to improving the health and quality of life of aging populations
-- through the use of technology
-
-CH's research focuses on 
-- alleviating the burdens, financial and physical, of chronic disease treatment 
-- by examining how technology can improve healthcare delivery and support, 
-- in particular at the intersection of community and organizational health system components.
-
----
-layout:false
-class: bottom, center, bg-full, no-pad, no-slide-number
-<!-- background-size: cover -->
-<!-- background-image: url(images/villages-flyover.png) -->
-
-<video loop muted autoplay poster="images/villages-flyover.png" class="bg-video">
-    <source src="images/villages-flyover2.mp4" type="video/mp4">
-</video>
-
-.box-center-bottom.box-light[
-<img src="images/thevillages-logo.svg" width="80%">
-
-<div style="text-align: left; padding-left: 60px">
-<ul>
-<li>The largest retirement community in US</li>
-<li>115,000 residents in 50,000 homes</li>
-<li>75 miles north of Tampa, FL</li>
-<li>Average age: 62 (M) and 60 (F)</li>
-<ul>
-</div>
-]
-<!-- <div style="padding: 15px">&nbsp;</div> -->
-
-???
-.notes-list[
-- 32 sq miles
-- 3 town squares
-- 63 rec centers
-- legend has it a Villager can play 18 holes of gold for 30 straight days without repeating
-]
-
----
-class: inverse middle
-
-## Research Objective
-
-<hr>
-
-.bigger.inverse-text[
-Can we effectively use<br>
-passively-recorded<br>
-unlabelled sensor data<br>
-to characterize lifestyle<br>
-activity patterns and enable<br>
-detection of changes in routine?<br>
-]
-
-???
-
-To summarize, our research objective is centered on the question...
-
-We will address this question from two angles:
-
-1. Defining *lifestyle activity pattern*
-
-2. Using the AP for behavior change detection
+This really summarizes the potential impact of a system like HomeSense in terms of the sense of security and reassurance that it provides to older adults and their caregivers.
 
 ---
 
@@ -445,11 +449,12 @@ We will address this question from two angles:
 This need for safe aging in place is reflected in our design goal
 of supporting **lifestyle reassurance**.
 
-Our objective is to use supporting technologies such as HomeSense to
+Our objective is to develop supporting technologies such as HomeSense to
 alleviate the burden of chronic illness on OA & CGs
 
-To that end we want to support safety and security by noticing changes
-in behavior and routine and alerting OA/CGs when these occur
+A primary goal of such a system is to support safety and security 
+by noticing changes in behavior and routine and alerting 
+OA/CGs when these occur
 
 --
 
@@ -477,79 +482,38 @@ explicit, high-level activity labels
 and that can effectively make use of real-world, natural SH act. data
 
 ---
-### Outline
+name: research
+
+### Research Objective
 
 .big[
-1. Data Collection and Processing
-
-2. Activity Profiles
-
-3. Behavior Change Detection
+>_Can we effectively use passively-recorded
+unlabelled sensor data
+to characterize lifestyle
+activity patterns and enable
+detection of changes in routine?_
 ]
 
 ???
 
+To summarize, our research objective is centered on the question...
+
+We will address this question from two angles:
+
+1. Defining *lifestyle activity pattern*
+
+2. Using the AP for behavior change detection
+
 Over the next few slides, we'll touch briefly on<br>
 the sensor system and the data that we collected<br>
 
-Then I'll lay out our definition of *activity profiles*
+Then I'll explain our definition of *activity profiles*
 and present the results of an experiment to demonstrate
-that the activity profile captures the unique behavior 
+that these activity profiles capture the unique behavior 
 of the occupant.
 
 Finally, we'll discuss the method and results of the 
 algorithm for behavior change detection.
-
----
-### Data Collection
-
-**HomeSense** was installed in the homes of
-- community-dwelling older adults in The Villages, FL
-- who live alone and were of good health
-
-Bi-weekly phone survey tracks health changes, significant life events
-
-???
-
-Read slides...
-
-14 participants, aged 68+
-
---
-
-### Data Selection for Activity Profiles
-
-Selected 6 participants who completed at least 196 days
-
-- Excluding vacation, maintenance visits, guests & visitors
-
-Each of the homes have similar floorplan & sensor layout
-
-???
-
-Because sensor installations varied according to floorplan
-we selected a subset of participants with longterm participation
-and standard sensor layouts.
-
----
-background-image: url(images/simple-exp-covered.png)
-background-size: 96%
-background-position: 20% 50%
-exclude: true
----
-
-### Floorplan and Sensor Layout
-
-<img src="images/simple-exp-covered.png" height="430px">
-
-???
-
-Included in the sensor network
-- motion sensors for the generalized detection
-of presence throughout the home
-- magnetic contact sensors for detection of
-interaction with entrance and exit doors and routinely used objects
-- wireless, z-wave
 
 ---
 layout: true
@@ -566,6 +530,14 @@ layout: true
 - Gather and count each n-gram
 
 ---
+
+- Concise representation of sensor activities
+
+- Allow comparison between activities at different time points or occupants
+
+--
+
+<br>
 
 Represent sensor events as daily *event sequences*
 
@@ -664,7 +636,7 @@ for (i in 1:7) {
     if (i == 1) "\n\n--\n\n",
     "&nbsp;&nbsp;&nbsp;&nbsp;.big[\U2B07]",
     if (i == 1) "\n\n--\n\n",
-    if (length(ngrams)) paste0("\n\n**Bag of event n-grams**\n\n.word[", paste(ngrams, collapse = "] .word["), "]"),
+    if (length(ngrams)) paste0("\n\n#### Bag of event n-grams\n\n.word[", paste(ngrams, collapse = "] .word["), "]"),
     # if (length(ngrams)) paste0("\n\n**Bag of n-grams:**\n\n<ul class=\"words\"><li>", paste(ngrams, collapse = "</li><li>"), "</ul>"),
     "\n\n---\n\n")
 }
@@ -716,7 +688,7 @@ layout: true
 
 --
 
-**Reframe as supervised learning**
+#### Reframe as supervised learning
 
 *Can we identify the correct occupant for a de-identified day of activity?*
 
@@ -724,18 +696,74 @@ layout: true
 
 Also: If we're creating a baseline profile, how many days are needed?
 
+---
+
+#### Data Collection
+
+**HomeSense** was installed in the homes of
+- community-dwelling older adults in The Villages, FL
+- who live alone and were of good health
+
+Bi-weekly phone survey tracks health changes, significant life events
+
+???
+
+Read slides...
+
+14 participants, aged 68+
+
 --
 
-**Experimental Setup**
+#### Data Selection for Activity Profiles
+
+Selected 6 participants:
+
+- homes with similar floorplan & sensor layout
+
+- who completed at least 196 days
+    - Excluding vacation, maintenance visits, guests & visitors
+
+???
+
+Because sensor installations varied according to floorplan
+we selected a subset of participants with longterm participation
+and standard sensor layouts.
+
+---
+background-image: url(images/simple-exp-covered.png)
+background-size: 96%
+background-position: 20% 50%
+exclude: true
+---
+layout: false
+
+### Floorplan and Sensor Layout
+
+<img src="images/simple-exp-covered.png" height="430px">
+
+???
+
+Included in the sensor network
+- motion sensors for the generalized detection
+of presence throughout the home
+- magnetic contact sensors for detection of
+interaction with entrance and exit doors and routinely used objects
+- wireless, z-wave
+
+
+---
+### Evaluating Activity Profiles
+
+#### Experimental Setup
+
+- Create **activity profile** for each occupant from *N* days
+    - *N* — 14 days to 3 months
+    
+- Label test day with occupant of best activity profile match
 
 - 7-fold cross validation
     - Test on each of **28 testing days**
     - Profiles drawn from remaining **168 training days**
-  
-- Baseline N-day activity profile for each occupant
-    - N — 14 days to 3 months
-    
-- Measure ability to correctly identify occupant of test day
 
 ???
 
@@ -866,10 +894,10 @@ SINGLE_PAUSE <- TRUE
 ```
 
 - Compare occupant's recent activity to previous behavior
+    - 4 participants with 1+ years data
+    - Using all binary, active sensors
 
 - Permutation-based methods for change detection<sup>`r add_ref("Sprint2016-swPCAR")`</sup>
-
-- Alert caregivers or system operators to shifts in behavior patterns
 
 .footnote[
 `r refs["Sprint2016-swPCAR"]`: `r Citet(bib, "Sprint2016-swPCAR")`
@@ -880,7 +908,6 @@ SINGLE_PAUSE <- TRUE
 - Having validated that the activity profiles are capable<br> 
   of summarizing the activity patterns of an occupant,<br>
   we now turn to the task of behavior change detection
-
 
 - compare occupant's recent activity to previous behavior<br>
   previous behavior is either a baseline period of normalcy<br>
@@ -896,8 +923,10 @@ SINGLE_PAUSE <- TRUE
 
 ---
 
+--
+
 ```{r permutation-setup}
-plot_day_examples <- function(ws, shuffle = FALSE) {
+plot_day_examples <- function(ws, shuffle = FALSE, bottom = TRUE) {
   if (shuffle) {
     stopifnot(length(unique(ws$label)) == 2)
     w1 <- sample(0:1, nrow(ws)/2, replace = TRUE)
@@ -913,14 +942,16 @@ plot_day_examples <- function(ws, shuffle = FALSE) {
   )
   if (shuffle) ws$x <- c("W1" = "W*1", "W2" = "W*2")[ws$x]
   ws$label <- factor(ws$label, c("w1", "w2", "W1", "W2"))
-  ggplot(ws, aes(y, x, fill = label, color = label)) + 
+  g <- ggplot(ws, aes(y, x, fill = label, color = label)) + 
     geom_tile(width = 0.9, height = 0.9, color = "black") + 
-    geom_vline(xintercept = 0.375, color = 'black', size = 1.25) +
+    geom_vline(xintercept = 0.375, color = 'black', size = 1) +
+    # geom_hline(yintercept = 0.40, color = "black", size = 1, arrow = arrow(length = unit(0.03, "npc"))) +
     coord_equal() + 
     guides(fill = FALSE) + 
-    labs(x = "", y = "") + 
+    labs(x = "Days", y = "") + 
     # ylim(-0.75, 10.5) +
-    scale_x_continuous(limits = c(-0.75, 20.5), expand = c(0,0))+
+    scale_x_continuous(limits = c(-0.75, 22), expand = c(0,0))+
+    scale_y_discrete(expand = c(0, 0.8)) +
     # scale_fill_manual(values = c(
     #   "#7FB1C1", # lighten_color(usf_accent[7], 0.5)
     #   usf_accent[c(5, 7, 3)])) +
@@ -929,8 +960,18 @@ plot_day_examples <- function(ws, shuffle = FALSE) {
     theme(
       plot.margin = margin(0, 1, 0, 0),
       panel.grid = element_blank(), 
-      axis.text.x = element_blank()
+      # axis.line.x = element_line(colour = 'black'),
+      axis.text.x = element_blank(),
+      axis.title.x = element_text(size = 18)
     )
+  if (bottom) g +
+    geom_segment(data = data_frame(x = 0.375, xend = 21.5, y = 0.1, yend = 0.1, label = "W1"),
+                 aes(x = x, xend = xend, y = y, yend = y),
+                 color = "black", size = 1.25,
+                 arrow = arrow(length = unit(0.2, "npc"))) +
+    labs(x = "Days", y = "")
+  else g + labs(x = "", y = "")
+    
 }
 
 ws <- data_frame(
@@ -944,7 +985,7 @@ ws <- data_frame(
 permuted_plots <- list()
 set.seed(43)
 for (i in 1:4) {
-  permuted_plots[[i]] <- plot_day_examples(ws, i > 1)
+  permuted_plots[[i]] <- plot_day_examples(ws, i > 1, i %in% c(1, 4))
 }
 cowplot::plot_grid(permuted_plots[[1]], ncol = 2)
 cat("\n\n---\n\n")
@@ -1171,6 +1212,7 @@ cowplot::plot_grid(
 ]
 
 ---
+name: closing
 background-image: url(images/usf-closing.jpg)
 class: middle right white no-slide-number
 
@@ -1190,12 +1232,15 @@ exclude: true
 ### University of South Florida
 
 ---
+name: refs
+class: refs-size
 
-#### References
+### References
 
-```{r bibliography}
+```{r bibliography, cache=FALSE}
 citations <- list(
   "Mather2015" = "Mather, M., Jacobssen, L., & Pollard, K. M. (2015). *Aging in the United States*.",
+  "Pearson2012" = 'Pearson, W. S., Bhat-Schelbert, K., & Probst, J. C. (2012). Multiple chronic conditions and the aging of America: Challenge for primary care physicians. *Journal of Primary Care & Community Health*, *3*(1), 51–56. doi:[10.1177/2150131911414577](https://doi.org/10.1177/2150131911414577)',
   "Demiris2008a" = 'Demiris, G., & Hensel, B. K. (2008). Technologies for an aging society: A systematic review of "smart home" applications. *Yearbook of Medical Informatics*, 33–40. pubmed:[18660873](http://www.ncbi.nlm.nih.gov/pubmed/18660873)',
 "Szewcyzk2009-Annotatingsmartenvironment" = 'Szewcyzk, S., Dwan, K., Minor, B., Swedlove, B., & Cook, D. (2009). Annotating smart environment sensor data for activity learning. *Technology and Health Care*, *17*(3), 161–169. doi:[10.3233/THC-2009-0546](https://doi.org/10.3233/THC-2009-0546)',
 "Hamid2005" = 'Hamid, R., Johnson, A., Batta, S., Bobick, A., Isbell, C., & Coleman, G. (2005). Detection and explanation of anomalous activities: Representing activities as bags of event n-grams. *Proceedings - 2005 IEEE Computer Society Conference on Computer Vision and Pattern Recognition, CVPR 2005*, *I*, 1031–1038. doi:[10.1109/CVPR.2005.127](https://doi.org/10.1109/CVPR.2005.127)',
@@ -1204,7 +1249,7 @@ citations <- list(
 )
 
 for (ref in names(refs)) {
-  cat(refs[ref], ". ", citations[[ref]], "\n", sep = "")
+  cat(refs[ref], ". ", citations[[ref]], "\n\n", sep = "")
 }
 ```
 

@@ -173,6 +173,11 @@ table.dataTable.hover tbody tr:hover, table.dataTable.display tbody tr:hover {
   background-image: url(images/usf-bg-title.jpg);
   background-size: cover;
 }
+.remark-slide-content h4 {
+  color: #006747;
+  font-size: 1.1em;
+  margin-bottom: 0;
+}
 .title-slide h1 {
   text-align: left;
   position: absolute;
