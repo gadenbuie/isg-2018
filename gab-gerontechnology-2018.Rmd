@@ -380,9 +380,9 @@ The goal of the system that we call __HomeSense__
 
 ### The HomeSense System
 
-.pull-left[
-.mt-3[
+.pull-left.center[
 ![](images/sensors.png)
+<img src="images/server-rack.jpg" height="155px">
 ]
 
 
@@ -392,7 +392,6 @@ The goal of the system that we call __HomeSense__
 <i class="fas fa-table" style="color: #17A2B8"></i>&nbsp;
 <i class="fas fa-bell" style="color: #DC3545"></i>
 ] -->
-]
 
 .pull-right[
 <img src="images/wilson-admin-01-front-page.png" style="border: 2px #000 solid; border-radius: 2px">
