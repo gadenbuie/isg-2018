@@ -466,8 +466,8 @@ OA/CGs when these occur
 
 - Reflects real-world, natural, smart home activity data
 
-.footnote[
-`r refs["Demiris2008a"]`: `r Citet(bib, "Demiris2008a")`; 
+.footnote.small[
+`r refs["Demiris2008a"]`: `r Citet(bib, "Demiris2008a")`<br>
 `r refs["Szewcyzk2009-Annotatingsmartenvironment"]`: `r Citet(bib, "Szewcyzk2009-Annotatingsmartenvironment")`
 ]
 
@@ -549,7 +549,7 @@ Represent sensor events as daily *event sequences*
 
 1. Summarize event sequence as **bag-of-event _n_-grams**`r add_ref("Hamid2005")`
 
-.footnote[
+.footnote.small[
 `r refs["Hamid2005"]`: `r Citet(bib, "Hamid2005")`
 ]
 
@@ -698,13 +698,16 @@ Also: If we're creating a baseline profile, how many days are needed?
 
 ---
 
+.pull-left[
 #### Data Collection
 
-**HomeSense** was installed in the homes of
-- community-dwelling older adults in The Villages, FL
-- who live alone and were of good health
+**HomeSense** was installed in homes of
+- Community-dwelling older adults in The Villages, FL
 
-Bi-weekly phone survey tracks health changes, significant life events
+- Who live alone and were of<br>good health
+
+Bi-weekly phone survey tracks<br>health changes, significant life events
+]
 
 ???
 
@@ -714,14 +717,16 @@ Read slides...
 
 --
 
+.pull-right[
 #### Data Selection for Activity Profiles
 
 Selected 6 participants:
 
-- homes with similar floorplan & sensor layout
+- Homes with similar floorplan and sensor layout
 
-- who completed at least 196 days
-    - Excluding vacation, maintenance visits, guests & visitors
+- Who completed at least 196 days<br>
+  (Excluding vacation, maintenance visits, guests & visitors)
+]
 
 ???
 
@@ -899,7 +904,7 @@ SINGLE_PAUSE <- TRUE
 
 - Permutation-based methods for change detection<sup>`r add_ref("Sprint2016-swPCAR")`</sup>
 
-.footnote[
+.footnote.small[
 `r refs["Sprint2016-swPCAR"]`: `r Citet(bib, "Sprint2016-swPCAR")`
 ]
 
@@ -1189,7 +1194,7 @@ cowplot::plot_grid(
 <img src="images/notification-email.png" height="225px" style="margin-top: 25px">
 ]
 
-.footnote[
+.footnote.small[
 `r refs["Ribeiro2016-WhyShouldTrustYou"]`: `r Citet(bib, "Ribeiro2016-WhyShouldTrustYou")`
 ]
 
